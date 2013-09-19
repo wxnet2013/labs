@@ -5,6 +5,7 @@ labname: localStorage与domain设置
 ---
 <h2>{{ page.labname }}</h2>
 <script>
+alert('默认的domain' + document.domain);
 localStorage['k'] = '{"a":"1"}';
 document.domain = "wxnet.me";
 </script>
