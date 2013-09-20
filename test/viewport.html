@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+　　<head>
+　　　　<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta content="width=device-width,initial-scale=1.0,user-scalable=no" name="viewport" />
+　　　　<title>viewport</title>
+　　</head>
+　　<body>
+　　　<style>
+		body,html {
+			margin: 0;
+			padding: 0;
+
+		}
+		.pannel {
+			width: 320px;
+			height:480px;
+			background-color: green;
+			margin: 0;
+		}
+		</style>
+		<div class="pannel">
+			480*320
+			<img src='http://m.baidu.com/static/index/logo_index2.png'>
+		</div>
+
+		<script>
+		var screenAttrs = 'availHeight,availLeft,availTop,availWidth,colorDepth,height,pixelDepth,width'.split(',');
+		var arr = [];
+		for(var i=0;i<8;i++){
+			arr.push(screenAttrs[i] + " : " + screen[screenAttrs[i]]);
+		}
+
+		//document.write(arr.join('<br>'));
+		var width = Math.min(screen.width,screen.height),
+		    height = Math.max(screen.width,screen.height),
+		    rate = height / width;
+
+
+		var ele = document.querySelector('meta[name="viewport"]');
+		function fn(e){
+			//alert(e.type);
+			//document.getElementById('label').innerHTML = window.orientation;
+			//rate = '' + rate.toFixed(1);			
+			ele.content = window.orientation !== 0 ?
+							'width=device-width,initial-scale=1.8, user-scalable=no' :
+								'width=device-width,initial-scale=1.0, user-scalable=no';
+								
+		}
+
+		//webkit移动版 差不多都支持
+		window.addEventListener('load',fn,false);
+		window.addEventListener('orientationchange',fn,false);
+
+		/*
+		window.addEventListener('load',function() {
+			// body...
+			alert(ele.content);
+		},false);*/
+
+		</script>
+　　</body>
+</html>

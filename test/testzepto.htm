@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>zepto.js test</title>
+
+  <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css">
+
+  <script src="http://zeptojs.com/zepto.min.js"></script>
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <div style="position:absolute;left:-2000px;">
+  	<div id="htmltest1" class="htmltest">test</div>
+  	<div id="htmltest2" class="htmltest">test</div>
+  	<input id="attr_val" value="Hello World">
+  	<p id="find1">
+    <span class="findme">1</span>
+    <span class="findme">2</span>
+    <b>3<span class="findme">4</span></b>
+    <span class="findme">5<span>6</span></span>
+  	</p>
+  	<p id="find2">
+    <span>1</span>
+    <span>2</span>
+    <span>3<span>4</span></span>
+    <span>5<span>6</span></span>
+  	</p>
+  </div>
+  <script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
+  <script>
+
+  	test('find test', function(){
+  		var found = $('p#find1').find('span.findme');
+        ok(4, found.length);
+        ok('1', found.get(0).innerHTML)
+        ok('2', found.get(1).innerHTML)
+        ok('4', found.get(2).innerHTML)
+        ok('5<span>6</span>', found.get(3).innerHTML)
+
+       	found = $('p#find1, #find2').find('span')
+        ok(11, found.length);
+  	});
+
+  	test('html test', function(){
+  		var div = $('div.htmltest')
+        div.html('yowza');
+
+        ok('yowza', document.getElementById('htmltest1').innerHTML)
+        ok('yowza', document.getElementById('htmltest2').innerHTML)
+       	ok('yowza', $('div.htmltest').html())
+
+        div.html('')
+        ok(' ', document.getElementById('htmltest2').innerHTML)
+        ok(" ", $('#htmltest3').html())
+
+       
+        //ok(null, $('doesnotexist').html(),'passed');
+        div.html('yowza')
+        div.html(function(idx, html){
+          return html.toUpperCase()
+        })
+        ok('YOWZA', div.html())
+
+        div.html('<u>a</u><u>b</u><u>c</u>')
+
+        $('u').html(function(idx,html){
+          return idx+html
+        })
+       	ok('<u>0a</u><u>1b</u><u>2c</u>', div.html())
+
+        var table = $('#htmltest4'),
+          html = '<tbody><tr><td>ok</td></tr></tbody>'
+        table.html('<tbody><tr><td>ok</td></tr></tbody>')
+        ok(html, table.html())
+
+
+  	});
+
+	test( "value test", function() {
+	  	//ok( $('#val').val() == "test", "Passed!" );
+	    var input = $('#attr_val')
+        ok('Hello World', input.val(),'passed');
+        //input.val('');
+        //ok('', input.val(),'passed');
+        input.get(0).value = 'Hello again';
+        ok('Hello again', input.val(),'passed');
+        input.val(function(i, val){ return val.replace('Hello', 'Bye') })
+        ok('Bye again', input.val(),'passed');
+        //ok($('non-existent').val(),'passed');
+        var multiple =
+          $('<select multiple><option selected>1</option><option value=2 selected="selected">a</option><option>3</option></select>')
+        ok(['1','2'], multiple.val(),'passed');
+        multiple.find('option')[0].selected = false
+        ok(['2'], multiple.val(),'passed');
+	});
+  </script>
+</body>
+</html>

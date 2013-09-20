@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+  <title>zepto.js test</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.11.0.css">
+
+  <script src="http://zeptojs.com/zepto.min.js"></script>
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <div style="position:absolute;left:-2000px;">
+    <div id="some_element"></div>
+    <div id="toggle_element"></div>
+  	<div id="htmltest1" class="htmltest">test</div>
+  	<div id="htmltest2" class="htmltest">test</div>
+  	<input id="attr_val" value="Hello World">
+  	<p id="find1">
+    <span class="findme">1</span>
+    <span class="findme">2</span>
+    <b>3<span class="findme">4</span></b>
+    <span class="findme">5<span>6</span></span>
+  	</p>
+  	<p id="find2">
+    <span>1</span>
+    <span>2</span>
+    <span>3<span>4</span></span>
+    <span>5<span>6</span></span>
+  	</p>
+    <div id="attr_1" data-id="someId1" data-name="someName1"></div>
+    <div id="attr_2" data-id="someId2" data-name="someName2"></div>
+
+      <div id="texttest1" class="texttest"><span>Here <strong>is</strong> some text</span></div>
+  <div id="texttest2" class="texttest">And <em>some more</em></div>
+    <div id="insertbeforeinsertafter_container"><div id="insertbeforeinsertafter"></div></div>
+  </div>
+  <script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
+  <script>
+
+  	test('find', function(){
+  		var found = $('p#find1').find('span.findme');
+        ok(4, found.length);
+        ok('1', found.get(0).innerHTML)
+        ok('2', found.get(1).innerHTML)
+        ok('4', found.get(2).innerHTML)
+        ok('5<span>6</span>', found.get(3).innerHTML)
+
+       	found = $('p#find1, #find2').find('span')
+        ok(11, found.length);
+  	});
+
+  	test('html', function(){
+  		var div = $('div.htmltest')
+        div.html('yowza');
+
+        ok('yowza', document.getElementById('htmltest1').innerHTML)
+        ok('yowza', document.getElementById('htmltest2').innerHTML)
+       	ok('yowza', $('div.htmltest').html())
+
+        div.html('')
+        ok(' ', document.getElementById('htmltest2').innerHTML)
+        ok(" ", $('#htmltest3').html())
+
+       
+        //ok(null, $('doesnotexist').html(),'passed');
+        div.html('yowza')
+        div.html(function(idx, html){
+          return html.toUpperCase()
+        })
+        ok('YOWZA', div.html())
+
+        div.html('<u>a</u><u>b</u><u>c</u>')
+
+        $('u').html(function(idx,html){
+          return idx+html
+        })
+       	ok('<u>0a</u><u>1b</u><u>2c</u>', div.html())
+
+        var table = $('#htmltest4'),
+          html = '<tbody><tr><td>ok</td></tr></tbody>'
+        table.html('<tbody><tr><td>ok</td></tr></tbody>')
+        ok(html, table.html())
+
+
+  	});
+
+    test('text', function(t){
+        ok('Here is some text', $('div.texttest').text())
+        ok('And some more', $('#texttest2').text())
+
+        $('div.texttest').text("Let's set it")
+        ok("Let's set it", $('#texttest1').text())
+        ok("Let's set it", $('#texttest2').text())
+
+        $('#texttest2').text('')
+        ok("Let's set it", $('div.texttest').text())
+        ok(' ', $('#texttest2').text())
+    });
+
+	test( "value", function() {
+	  	//ok( $('#val').val() == "test", "Passed!" );
+	    var input = $('#attr_val')
+        ok('Hello World', input.val(),'passed');
+        //input.val('');
+        //ok('', input.val(),'passed');
+        input.get(0).value = 'Hello again';
+        ok('Hello again', input.val(),'passed');
+        input.val(function(i, val){ return val.replace('Hello', 'Bye') })
+        ok('Bye again', input.val(),'passed');
+        //ok($('non-existent').val(),'passed');
+        var multiple =
+          $('<select multiple><option selected>1</option><option value=2 selected="selected">a</option><option>3</option></select>')
+        ok(['1','2'], multiple.val(),'passed');
+        multiple.find('option')[0].selected = false
+        ok(['2'], multiple.val(),'passed');
+	});
+
+
+  test('attr', function(t){
+        var els = $('#attr_1, #attr_2')
+
+        ok('someId1', els.attr("data-id"))
+        ok('someName1', els.attr("data-name"))
+
+        els.attr("data-id","someOtherId")
+        els.attr("data-name","someOtherName")
+
+        ok('someOtherId', els.attr("data-id"))
+        ok('someOtherName', els.attr("data-name"))
+        ok('someOtherId', $('#attr_2').attr('data-id'))
+
+        //ok(els.attr("nonExistentAttribute"),null)
+
+        els.attr("data-id", false)
+        ok("false", els.attr("data-id"))
+
+        els.attr("data-id", 0)
+        ok("0", els.attr("data-id"))
+
+        els.attr({ 'data-id': 'id', 'data-name': 'name' })
+        ok('id', els.attr("data-id"))
+        ok('name', els.attr("data-name"))
+        ok('id', $('#attr_2').attr('data-id'))
+
+        els.attr('data-id', function(idx,oldvalue){
+          return idx+oldvalue
+        })
+        ok('0id', els.attr('data-id'))
+        ok('1id', $('#attr_2').attr('data-id'))
+    });
+
+
+    test('dollarEach', function(t){
+        var array = ['a','b','c'], object = { a: 1, b: 2, c: 3 }, result
+
+        result = []
+        $.each(array, function(idx, val){
+          result.push(idx)
+          result.push(val)
+        })
+        ok('0a1b2c', result.join(''))
+
+        result = []
+        $.each(object, function(key, val){
+          result.push(key)
+          result.push(val)
+        })
+        ok('a1b2c3', result.join(''))
+
+        result = []
+        $.each(array, function(idx, val){
+          result.push(idx)
+          result.push(val)
+          return idx<1
+        })
+        ok('0a1b', result.join(''))
+
+        ok('abc', $.each(array, function(){}).join(''))
+    });
+
+
+    test('hasClass',function(){
+        var el = $('#some_element')
+        el.addClass('green')
+
+        ok(true, el.hasClass('green'))
+        ok(true, !el.hasClass('orange'))
+
+        el.addClass('orange')
+        ok(true, el.hasClass('green'))
+        ok(true, el.hasClass('orange'))
+
+        el = $(document.body)
+        ok(true, !el.hasClass('orange'), "body shouldn't have the class")
+        el = el.add('#some_element')
+        ok(true, el.hasClass('orange'), "an element in collection has the class")
+    });
+
+    test('HasClassEmpty', function(){
+        var z = $('#doesnotexist')
+
+        equal(0, z.size())
+        equal(false, z.hasClass('a'))
+    });
+
+    test('ToggleClass', function(){
+        var el = $('#toggle_element').removeClass()
+
+        //t.assertIdentical(el, el.toggleClass('green'))
+        el.toggleClass('green')
+        equal(true,el.hasClass('green'))
+        equal(false,el.hasClass('orange'))
+
+        el.toggleClass('orange')
+        equal(true,el.hasClass('green'))
+        equal(true,el.hasClass('orange'))
+
+        el.toggleClass('green')
+        equal(false,el.hasClass('green'))
+        equal(true,el.hasClass('orange'))
+
+        el.toggleClass('orange')
+        equal(false,el.hasClass('green'))
+        equal(false,el.hasClass('orange'))
+
+        el.toggleClass('orange green')
+        equal(true,el.hasClass('orange'))
+        equal(true,el.hasClass('green'))
+
+        el.toggleClass('orange green blue')
+        equal(false,el.hasClass('orange'))
+        equal(false,el.hasClass('green'))
+        equal(true,el.hasClass('blue'))
+
+        el.removeClass()
+
+        el.toggleClass('orange', false)
+        equal(false,el.hasClass('orange'))
+        el.toggleClass('orange', false)
+        equal(false,el.hasClass('orange'))
+
+        el.toggleClass('orange', true)
+        equal(true,el.hasClass('orange'))
+        el.toggleClass('orange', true)
+        equal(true,el.hasClass('orange'))
+
+        //function argument
+        el.toggleClass(function(idx,classes){
+          //t.assertIdentical(el.get(0), this)
+          //test original classes are being passed
+          ok('orange', this.className)
+          return "brown"
+        })
+
+        equal(true,el.hasClass('brown'))
+
+        el.toggleClass(function(idx,classes){
+          return "yellow"
+        }, false)
+        equal(false,el.hasClass('yellow'))
+
+        el.toggleClass(function(idx,classes){
+          return "yellow"
+        }, true)
+        equal(true,el.hasClass('yellow'))
+      });
+
+      test('insertBeforeInsertAfter', function(){
+        //testing with Zepto object
+        function div(contents){
+          var el = document.createElement('div')
+          el.innerHTML = contents
+          return el
+        }
+
+        var ib = $(div('insertbefore'))
+        var ia = $(div('insertafter'))
+
+        var ibia = $('#insertbeforeinsertafter')
+        var ib2 = ib.insertBefore(ibia)
+        var ia2 = ia.insertAfter(ibia)
+
+        // Test the object returned is correct for method chaining
+        ok(
+          '<div>insertbefore</div><div id="insertbeforeinsertafter">'+
+          '</div><div>insertafter</div>',
+          $('#insertbeforeinsertafter_container').html()
+        )
+
+        //testing with a zepto object of more than one element as parameter
+        $(document.body).append('<div class="insertbefore">insertbefore1</div><div class="insertbefore">insertbefore2</div>')
+        $(document.body).append('<div class="insertafter">insertafter1</div><div class="insertafter">insertafter2</div>')
+
+        $('#insertbeforeinsertafter_container').html('<div id="insertbeforeinsertafter"></div>')
+
+        $('.insertbefore').insertBefore($('#insertbeforeinsertafter'))
+        $('.insertafter').insertAfter($('#insertbeforeinsertafter'))
+
+        ok(
+          '<div class="insertbefore">insertbefore1</div><div class="insertbefore">insertbefore2</div>'+
+          '<div id="insertbeforeinsertafter"></div><div class="insertafter">insertafter1</div>'+
+          '<div class="insertafter">insertafter2</div>',
+          $('#insertbeforeinsertafter_container').html()
+        )
+
+        //testing with a selector as parameter
+        $('#insertbeforeinsertafter_container').html('<div id="insertbeforeinsertafter"></div>')
+
+        ib.insertBefore('#insertbeforeinsertafter')
+        ia.insertAfter('#insertbeforeinsertafter')
+
+        ok(
+          '<div>insertbefore</div><div id="insertbeforeinsertafter">'+
+          '</div><div>insertafter</div>',
+          $('#insertbeforeinsertafter_container').html()
+        )
+        ////
+        //
+      });
+  </script>
+</body>
+</html>

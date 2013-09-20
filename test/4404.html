@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta content="initial-scale=1,maximum-scale=1,width=device-width" name="viewport" />
+<!--<meta content="width=device-width,initial-scale=1.0" name="viewport" />-->
+<!--<meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport" />-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>M站响应式全屏测试Demo</title>
+<style>
+@charset "utf-8";
+/* CSS Document */
+
+html {-webkit-text-size-adjust:none;overflow-x:hiddden; overflow-y:scroll;}
+body { margin:0; color:#969696; font:12px/20px "\5FAE\8F6F\96C5\9ED1",Arial,sans-serif; background:#f0f4f5;}
+ul,ol,li,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,form,input,i,u,em,small,sub,sup,input,button,textarea,p,th,td,strong{ margin:0; padding:0; font-style:normal;}
+input{outline:none} 
+a img{border:none;}
+li {list-style:none;}
+div, ul, dl { zoom:1;}
+img,fieldset { border:none; }
+h1,h2,h3,h4,h5,h6{font-size:30px; line-height:30px;}
+select, input, textarea { font-size:12px;}
+select, input, img { vertical-align:middle;}
+a{color:#444;text-decoration:none; outline:none;}
+a:hover{color:#529bef;text-decoration:none;}
+div:after, ul:after, dl:after { content:""; display:block; clear:both; height:0; visibility:hidden;}
+i,u,b,em,span,small{ font-weight:normal; font-style:normal; text-decoration:none; display:inline-block; font-size:12px;}
+.left,.con,.right{ float:left; display:inline;}.right{ float:right;}
+
+/**/
+
+.Head,.Focus,.Home-main,.Foot{ width:320px; margin:0 auto;}.Home-main{ padding:0 0px; width:320px; overflow:hidden;}.Head{ width:100%;}
+.Home-main .list{ padding-bottom:3px;}
+.Head .left{ width:200px; overflow:hidden;}.Head .right{ width:120px; overflow:hidden;}.Head .right img{ margin-left:-205px;}
+.Focus{ height:310px; overflow:hidden; position:relative;}
+.Focus b{ width:96%; position:absolute; left:2%; color:#fff;}.Focus .b-1{ bottom:30%; font-size:16px;}.Focus .b-2{  bottom:17%;font-size:24px;}.Focus .b-3{ bottom:3%; font-size:16px;}
+.Focus img{ width:320px; height:100%;}
+
+/**/
+
+.title{ height:35px; width:98%; margin:15px auto 0 auto;}
+.title span{ float:right; background:url(http://i2.letvimg.com/img/201306/20/1510/input-1.png) no-repeat left top; width:57px; height:30px; line-height:30px; text-align:center; margin-top:5px;}
+
+.w290{ box-shadow:2px 2px 3px #ddd; background-color:#fff; /*height:290px;*/ width:217px; float:left; display:inline; margin:15px 0 0 20px;}
+.w290 dt{ position:relative;}
+.w290 dt,.w290 dt a{ width:217px; /*height:210px;*/ display:block; overflow:hidden;}
+.w290 dt img{ width:217px;}
+.w290 dd{ width:96%; margin:0 auto; /*padding:0 15px;*/ padding:0 12px\0; height:26px; line-height:26px; overflow:hidden; font-size:18px;}
+.w290 i,.w290 b{ float:left;}
+.w290 i{ height:19px; margin:1px 0 0 5px; overflow:hidden;}
+.w290 i a{font-size:11px;color:#666;line-height:16px;display:inline-block;height:16px;padding:0 2px; font-weight:bold;border:1px solid #777;border-radius:3px;overflow:hidden; _font-size:12px; _font-weight:normal;}
+.w290:hover i a{ background-color:#333; color:#fff;}
+.w290:hover i a:hover,.w290 i a:hover{ background-color:#539bf0; border:1px solid #539bf0; transition:none; color:#fff;}
+.w290 .d-t b a{ font-size:24px;}
+.w290:hover{ box-shadow:0 0 3px #48a3ef;}
+.bg {background: url(http://i1.letvimg.com/img/201301/31/bg.png) repeat left top;bottom:0;cursor:pointer; height:29px;left:0;position:absolute; width:100%;}
+
+/**/
+
+.Map{ background-color:#e7e7e7; height:40px; overflow:hidden; margin-top:15px;}
+.Map ul{ overflow:hidden; height:40px;}
+.Map li{ float:left; text-align:center; line-height:40px; width:20%;}.Map li a{ color:#959595;}
+.Map li b{ font-size:15px; line-height:30px;}
+.Map li i{ float:right; width:1px; overflow:hidden; background-color:#ddd; height:40px;}
+
+.LetvTab{ width:99%; margin:15px auto 0 auto;}
+.LetvTab li{ float:left; width:33%; font-size:15px; text-align:center; line-height:40px;}
+.LetvTab li a{ display:block; width:100%; height:100%;}
+.LetvTab .Li01{ background-color:#6cb3e7; border-bottom:2px solid #629ec9;}.LetvTab .Li01 a,.LetvTab .Li01 a:hover{ color:#fff;}
+.LetvTab .Li02{ background-color:#e0e0e0; border-top:2px solid #bdbdbd;}.LetvTab .Li02 a,.LetvTab .Li02 a:hover{ color:#529bef;}
+.LetvTab .Li03{ background-color:#ffffff; border-bottom:2px solid #dedede;}.LetvTab .Li03 a,.LetvTab .Li03 a:hover{ color:#444;}
+
+.Foot{ text-align:center; font-size:24px; padding:15px 0;}
+
+.Home-main,.Map,.Foot,.Focus {width:100%;height: auto;}
+.Focus img{width:100%;height: auto;}
+.Home-main .list{ width:98%; margin:0 auto;}
+.list dl{ width:49%; float:left; margin-left:0;}
+.list dl dt,.list dl dt a{width: 100%;}
+.list dl dt img{ width:100%; height:auto; /*min-width:180px; min-height:135px;*/}.list .d-i{ padding-bottom:5px; font-size:16px;}
+</style>
+</head>
+<body>
+<div class="Head">
+  <div class="left"><img src="http://i3.letvimg.com/img/201306/20/1657/head.jpg" width="320" height="41"></div>
+  <div class="right"><img src="http://i3.letvimg.com/img/201306/20/1657/head.jpg" width="320" height="41"></div>
+</div>
+<div class="Focus"><b class="b-1">乐视制造</b><b class="b-2">我怀了你的孩子</b><b class="b-3">周一至周五每天12：00更新</b><img src="http://i2.letvimg.com/img/201306/20/1510/focus.jpg"></div>
+<div class="Home-main">
+  <div class="title"><span><a href="#" title="">更多&gt;&gt;</a></span>
+    <h2 class="H201">跟播剧场</h2>
+  </div>
+  <div class="list">
+    <dl class="w290" style="float:left;">
+      <dt><a href="#" title=""><img alt="" src="http://i1.letvimg.com/img/201306/20/1510/one.jpg"><b class="bg"></b></a></dt>
+      <dd class="d-t"><a href="#" title="">闯关东前传</a></dd>
+      <dd class="d-i">更新至20集</dd>
+    </dl>
+    <dl class="w290" style="float:right;">
+      <dt><a href="#" title=""><img alt="" src="http://i0.letvimg.com/img/201306/20/1510/two.jpg"><b class="bg"></b></a></dt>
+      <dd class="d-t"><a href="#" title="">天才碰麻瓜</a></dd>
+      <dd class="d-i">更新至20集</dd>
+    </dl>
+    <dl class="w290" style="float:left;">
+      <dt><a href="#" title=""><img alt="" src="http://i1.letvimg.com/img/201306/20/1612/three.jpg"><b class="bg"></b></a></dt>
+      <dd class="d-t"><a href="#" title="">猎杀</a></dd>
+      <dd class="d-i">更新至20集</dd>
+    </dl>
+    <dl class="w290" style="float:right;">
+      <dt><a href="#" title=""><img alt="" src="http://i2.letvimg.com/img/201306/20/1510/four.jpg"><b class="bg"></b></a></dt>
+      <dd class="d-t"><a href="#" title="">包青天</a></dd>
+      <dd class="d-i">更新至20集</dd>
+    </dl>
+    <dl class="w290" style="float:left;">
+      <dt><a href="#" title=""><img alt="" src="http://i3.letvimg.com/img/201306/20/1510/five.jpg"><b class="bg"></b></a></dt>
+      <dd class="d-t"><a href="#" title="">电影</a></dd>
+      <dd class="d-i">更新至20集</dd>
+    </dl>
+    <dl class="w290" style="float:right;">
+      <dt><a href="#" title=""><img alt="" src="http://i2.letvimg.com/img/201306/20/1510/six.jpg"><b class="bg"></b></a></dt>
+      <dd class="d-t"><a href="#" title="">文斯卡特暴扣</a></dd>
+      <dd class="d-i">更新至20集</dd>
+    </dl>
+  </div>
+</div>
+<div class="Map">
+  <ul>
+    <li><i></i><b><a href="#">首页</a></b></li>
+    <li><i></i><b><a href="#">关于乐视</a></b></li>
+    <li><i></i><b><a href="#">友情链接</a></b></li>
+    <li><i></i><b><a href="#">意见反馈</a></b></li>
+    <li><b><a href="#">网站地图</a></b></li>
+  </ul>
+</div>
+<div class="LetvTab">
+  <ul>
+    <li class="Li01"><a href="#">乐视影视</a></li>
+    <li class="Li02"><a href="#">触控板</a></li>
+    <li class="Li03"><a href="#">电脑版</a></li>
+  </ul>
+</div>
+<div class="Foot">备案123456789</div>
+</body>
+</html>

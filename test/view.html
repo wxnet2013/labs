@@ -1,0 +1,39 @@
+---
+layout: webapp
+title: 320
+---
+
+<style>
+body,html {
+	margin: 0;
+	padding: 0;
+}
+.pannel {
+	width: 320px;
+	height:480px;
+	background-color: green;
+	margin: 0 auto;
+}
+</style>
+<div class="pannel">
+	480*320
+</div>
+
+<script>
+var screenAttrs = 'availHeight,availLeft,availTop,availWidth,colorDepth,height,pixelDepth,width'.split(',');
+var arr = [];
+for(var i=0;i<8;i++){
+	arr.push(screenAttrs[i] + " : " + screen[screenAttrs[i]]);
+}
+
+document.write(arr.join('<br>'));
+
+alert(window.innerWidth);
+alert(window.innerHeight);
+
+var width = Math.min(screen.width,screen.height),
+    height = Math.max(screen.width,screen.height),
+    rate = Math.ceil(width / height);
+
+
+</script>

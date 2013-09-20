@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="android">
+<head>
+  <meta charset="utf-8">
+  <link rel="dns-prefetch" href="//js.letvcdn.com">
+  <link rel="dns-prefetch" href="//css.letvcdn.com">
+
+  <link rel="dns-prefetch" href="//i0.letvimg.com">
+
+  <link rel="dns-prefetch" href="//i1.letvimg.com">
+
+  <link rel="dns-prefetch" href="//i2.letvimg.com">
+
+  <link rel="dns-prefetch" href="//i3.letvimg.com">
+
+  <link rel="Shortcut Icon" href=" http://www.letv.com/favicon.ico" />
+
+  <title>手机乐视_乐视手机门户网站</title>
+
+  <meta name="keywords" content="乐视手机,手机视频,乐视手机门户,手机乐视">
+
+  <meta name="description" content="手机乐视（m.letv.com）是乐视网旗下手机视频平台，提供播放视频，搜索视频，分享视频等服务">
+
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+
+  <meta name="apple-touch-fullscreen" content="yes">
+
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+  <meta content="telephone=no" name="format-detection">
+
+  <meta name="apple-mobile-web-app-title" content="手机乐视">
+
+  <link rel="apple-touch-icon-precomposed" href="http://i1.letvimg.com/img/201307/25/appLetv.png"/>
+
+  <link rel="stylesheet" href="http://css.letvcdn.com/css/201309/03/webapp_141002/global.css">
+
+  <link rel="stylesheet" href="http://css.letvcdn.com/css/201309/03/webapp_141002/login.css">
+
+</head>
+
+<body>
+
+<div class="m-his">
+
+  <!-- 顶部导航 -->
+
+  <div class="head">
+
+    <div class="left">
+
+      <h1>手机乐视网</h1>
+
+      
+
+	<div class="h-logo"><a href="/"><img src="http://i1.letvimg.com/img/201307/15/1619/Logo.png" /></a></div>
+
+	
+
+      <div class="h-channel">
+
+        <span class="handle"><a data-action="channel"  href="#"><b>播放记录</b><i class="c-line"><u class="c-t"></u><u class="c-c"></u><u class="c-b"></u></i></a></span>
+
+      </div>
+
+    </div>
+
+    <div class="right">
+
+      <div class="h-search"><a href="/search"><i class="i-1"></i><i class="i-2"></i><i class="i-3"></i></a></div>
+
+      <div class="h-history"><a href="/history" ></a></div>
+
+    </div>
+
+</div>
+
+  <!-- 顶部导航 end -->
+
+  <!-- 频道 -->
+
+  <div class="menu j-channel-menu f-hide">
+
+    <ul>
+
+    <li><i></i><b><a href="/">首页</a></b></li>
+
+    <li><i></i><b><a href="/vlist_4_hot.html">电影</a></b></li>
+
+    <li><i></i><b><a href="/vlist_5_new.html">电视剧</a></b></li>
+
+    <li><b><a href="/vlist_6_lianzai.html">动漫</a></b></li>
+
+    <li><i></i><b><a href="/vlist_78_hot.html">综艺</a></b></li>
+
+    <li><i></i><b><a href="/vlist_221_hot.html">体育</a></b></li>
+
+    <li><i></i><b><a href="/vlist_169_hot.html">汽车</a></b></li>
+
+    <li><b><a href="/vlist_86_hot.html">娱乐</a></b></li>
+
+    <li><i></i><b><a href="/vlist_66_ml.html">音乐</a></b></li>
+
+    <li><i></i><b><a href="/vlist_186_hot.html">风尚</a></b></li>
+
+    <li><i></i><b><a href="/vlist_307_hot.html">旅游</a></b></li>
+
+    <li><b><a href="/vlist_111_hot.html">纪录片</a></b></li>
+
+    </ul>
+
+  </div>  <!-- 频道 end -->
+
+  
+
+  <div id="j-history">
+
+  	    </div>
+
+    <script  id="j-history-tpl" type="text/template">
+
+  {{#play_history}}
+
+  <div class="his-login"><span> <a class="ipt i-b" href="http://sso.letv.com/user/mloginHome?next_action=http://t.m.letv.com">登录</a> <b>后可云同步乐视网平台播放记录</b></span></div>
+
+  <div class="his-list">
+
+    <ul>
+
+	{{#list}}
+
+      <li><span class="s1"><i class="m-ph"></i><u style="width:{{per}}%;"></u></span><span class="s2"><a href="/vplay_{{vid}}.html">{{title}}</a></span><span class="s3">{{time}}</span><span class="s4"><em class="cls"><a data-action="rm" data-id="{{vid}}" href="#"><i class="i-1"></i><i class="i-2"></i></a></em></span></li>
+
+	{{/list}}
+
+    </ul>
+
+  </div>
+
+  {{/play_history}}
+
+  {{^play_history}}
+
+  <div class="his-no">
+
+    <p class="p1">暂无本地播放记录</p>
+
+    <div class="his-login"><span>
+
+    <a class="ipt i-b" href="http://sso.letv.com/user/mloginHome?next_action=http://t.m.letv.com">登录</a>
+
+    <b>或</b><a class="ipt i-b" href="http://sso.letv.com/user/mMobileReg">注册</a></span></div>
+
+    <p class="p2">可查看更多云播放记录</p>
+
+  </div>
+
+  {{/play_history}}
+
+  </script>
+
+
+
+  <!-- 公共底部 -->
+
+  <div class="menu bm j-bottom-menu">
+  <ul>
+    <li><i></i><b><a href="/">首页</a></b></li>
+    <li><i></i><b><a href="/vlist_4_hot.html">电影</a></b></li>
+    <li><i></i><b><a href="/vlist_5_new.html">电视剧</a></b></li>
+    <li><b><a href="/vlist_6_lianzai.html">动漫</a></b></li>
+    <li><i></i><b><a href="/vlist_78_hot.html">综艺</a></b></li>
+    <li><i></i><b><a href="/vlist_221_hot.html">体育</a></b></li>
+    <li><i></i><b><a href="/vlist_169_hot.html">汽车</a></b></li>
+    <li><b><a href="/vlist_86_hot.html">娱乐</a></b></li>
+    <li><i></i><b><a href="/vlist_66_ml.html">音乐</a></b></li>
+    <li><i></i><b><a href="/vlist_186_hot.html">风尚</a></b></li>
+    <li><i></i><b><a href="/vlist_307_hot.html">旅游</a></b></li>
+    <li class="wp"><b><a href="#" data-action="unfold">全部<u class="v b-v"></u></a></b></li>
+    <li class="wn"><b><a href="/vlist_92_hot.html">公开课</a></b></li>
+    <li class="wn"><i></i><b><a href="/vlist_111_hot.html">纪录片</a></b></li>
+    <li class="wn"><i></i><b><a href="/vlist_298_hot.html">财经</a></b></li>
+    <li class="wn"><i></i><b></b></li>
+    <li class="wn st"><b><a href="#" data-action="fold">收起<u class="v t-v"></u></a></b></li>
+  </ul>
+</div>
+<div class="map">
+  <ul>
+    <li><i></i><b><a href="/about/" rel=nofollow>关于乐视</a></b></li>
+    <li><i></i><b><a href="/link/">友情链接</a></b></li>
+    <li><b><a href="/sitemap_4.html">网站地图</a></b></li>
+    <li><b><a href="/feedback/" rel=nofollow>意见反馈</a></b></li>
+  </ul>
+</div>
+<div class="letvtab">
+  <ul>
+    <li class="li01"><a href="http://app.m.letv.com/download.php" rel=nofollow>乐视影视</a></li>
+    <li class="li02 active">手机版</li>
+    <li class="li03"><a href="/forward/web/pid/0/vid/0" rel=nofollow>PC版</a></li>
+  </ul>
+</div>
+<div class="foot">京公网安备：110105000744</div>
+  <!-- 公共底部end -->
+
+</div>
+
+<!-- 公共底部JS -->
+
+<script src="http://js.letvcdn.com/js/201309/04/lejs_061601/abc.js"></script><!-- 公共底部JS end -->
+
+<script>
+
+var info = {
+
+};
+
+__loadjs('base');
+
+__loadjs('play_history');
+
+</script>
+
+</body>
+
+</html>

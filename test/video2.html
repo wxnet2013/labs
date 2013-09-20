@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+
+<script>
+	var ua = navigator.userAgent,
+    android = ua.match(/(Android)\s+([\d.]+)/),
+    ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+    iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
+    if(!!iphone) {
+    	document.documentElement.classList.add('iphone');
+    }
+
+    if(!!android) {
+    	if (document.documentElement.classList) {
+    		document.documentElement.classList.add('android');
+    	} else {
+    		document.documentElement.className += ' android';
+    	}
+    }
+</script>
+
+<style>
+
+body {
+	margin:0;
+	padding: 0;
+}
+
+.player {
+	width:320px;
+	height:181px;
+}
+
+.android .player {
+	width: 100%;
+	height: auto;
+}
+
+@media screen and (max-device-width: 480px) and (orientation:landscape) {
+	/* iPhone 4 or iPod Touch 4th generation*/
+	.iphone .player {
+		width:480px;
+		height:271px;
+	}
+}
+
+@media screen and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation:landscape) {  
+	/* iPhone 5 or iPod Touch 5th generation */  
+	.iphone .player {
+		width:568px;
+		height:321px;
+	}			
+}  
+</style>
+</head>
+<body>
+<video id="player" width="320" height="181" class="player" controls="" autoplay="" src="http://123.125.89.53/36/40/33/letv-uts/4324426-AVC-249937-AAC-31994-2850267-101241096-b241960d199de9df64d8f15021bfe29c-1370780391542.mp4" poster="http://i0.letvimg.com/img/201305/14/iphone3/p_video.jpg" type="video/mp4"></video>
+</body>
+</html>

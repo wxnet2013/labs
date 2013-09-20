@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, width=device-width">
+
+<script type="text/javascript" src="http://js.letvcdn.com/js/201306/26/lejs_1110/abc.js"></script>
+<script type="text/javascript">__loadjs('h5player');</script>
+
+
+<script src="../javascripts/zepto.js"></script>
+<script src="../javascripts/zepto.extend.js"></script>
+
+
+<script>
+	var ua = navigator.userAgent,
+    android = ua.match(/(Android)\s+([\d.]+)/),
+    ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+    iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
+    if(!!iphone) {
+    	document.documentElement.classList.add('iphone');
+    }
+
+    if(!!android) {
+    	if (document.documentElement.classList) {
+    		document.documentElement.classList.add('android');
+    	} else {
+    		document.documentElement.className += ' android';
+    	}
+    }
+</script>
+
+<style>
+
+body {
+	margin:0;
+	padding: 0;
+}
+
+video {
+	display: block;
+}
+
+
+.html5-video-container {
+	width:320px;
+	height:181px;
+}
+
+
+/*
+.android .html5-video-container {
+	width: 100% !important;
+	height: auto !important;
+}
+*/
+
+/*for iphone*/
+@media screen and (max-device-width: 480px) and (orientation:landscape) {
+	/* iPhone 4 or iPod Touch 4th generation*/
+	.iphone .html5-video-container {
+		width:480px !important;
+		height:271px !important;
+	}
+}
+
+@media screen and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation:landscape) {  
+	/* iPhone 5 or iPod Touch 5th generation */  
+	.iphone .html5-video-container {
+		width:568px !important;
+		height:321px !important;
+	}			
+}  
+
+
+
+#test {
+	width:100px;height:100px;background-color:green !important;
+	clear: both;
+}
+</style>
+
+
+</head>
+<body>
+		<div id="divcontainer"></div>
+
+		<div id="test">ddd</div>
+		
+		<script type="text/javascript">
+				var width = window.innerWidth;
+					height = 181 / 320 * width;
+
+				var player = LETV.using("Plugin").Player({
+					'cont':'#divcontainer',
+					'width': width,
+					'height': height, 
+					'showDefinaBtns':true, 
+					'event':{
+						'onstart':function(){
+							console.log('onstart');
+						},
+						'onplay':function(){
+							
+						},
+						'onpause':function(){
+						},
+						'onend':function(){
+						}
+					},
+					'videoInfo':{'mmsid':2671560}
+				});
+
+
+
+		!!android && $(window).on('ortchange', function () {   
+			var width = window.innerWidth;
+					height = 181 / 320 * width; 
+        	$('.html5-video-container').width(width).height(height);
+     	});
+		</script>
+
+
+		
+
+
+
+</body>
+</html>

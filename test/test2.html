@@ -1,0 +1,859 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>乐视网 - 中国第一影视剧视频网站 高清影视剧 在线观看</title>
+<meta name="keywords" content="乐视网,高清电影,热播电视剧,正版影视剧,在线观看,动漫,综艺,视频网站"/>
+<meta name="description" content="乐视网是以正版,高清影视剧为主的视频门户网站,为用户提供正版高清电影,电视剧,动漫,综艺,娱乐等视频在线观看,视频分享,视频搜索等服务！"/>
+<meta name="msapplication-task" content="name=最新电视剧;action-uri=http://tv.letv.com/?ie9;icon-uri=http://www.letv.com/favicon.ico" />
+<meta name="msapplication-task" content="name=最新电影;action-uri=http://movie.letv.com/?ie9;icon-uri=http://www.letv.com/favicon.ico" />
+<meta name="msapplication-task" content="name=最新动漫;action-uri=http://comic.letv.com/?ie9;icon-uri=http://www.letv.com/favicon.ico" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<!--
+<link rel="stylesheet" type="text/css" href="http://css.letvcdn.com/css/201302/07/H-470.css" />
+<link rel="stylesheet" type="text/css" href="http://css.letvcdn.com/css/201302/07/H-968.css" />
+<link rel="stylesheet" type="text/css" href="http://css.letvcdn.com/css/201302/07/H-1440.css" />
+<link rel="stylesheet" type="text/css" href="http://css.letvcdn.com/css/201302/07/H-1280.css" />
+<link rel="stylesheet" type="text/css" href="http://css.letvcdn.com/css/201302/07/H-1024.css" />
+-->
+<script type="text/javascript">
+/*
+	响应式布局
+*/
+
+/*
+ResponseCss = function(data){
+	var cssData = {
+		'320':['1','2'],
+		'768':'3',
+		'1024':['4','5'],
+		'1280':['6','7'],
+		'1400':['8','9']
+	};
+	
+	cssData = data;
+	
+	var horizontal = 1,//横屏标示 1为竖屏 0为横屏
+	ua = navigator.userAgent.toLowerCase(), //获得浏览器agnet
+	isIphone = ua.match(/\b(iphone)\b/)||false, //是否苹果设备
+	isApple = ua.match(/\b(ipod|iphone|ipad|ipadmini)\b/)||false, //是否苹果设备
+	isAndroid  = ua.match(/\b(android|linux)\b/)||false,//是否是安卓设备
+	isIE6  = ua.match(/\b(mise 6.0)\b/)||false,//是否是安卓设备
+	currentWidth, //获得宽度引用
+	currentHeight,//获得高度引用
+	currentValue, //获得当前测量度引用
+	widthArray = [], //宽度数组
+	widthCache = 0, //宽度缓存
+	metaWirted = {};//meta设定记录
+	
+	//css数据适配
+	for(var key in cssData){
+		widthArray.push(parseInt(key)) //生成宽度数组
+		var data = cssData[key];
+		var format = {};
+		var width = null;
+		if(typeof data == 'string'){
+			data = [data]
+		}else if(data instanceof Array){
+			data = data;
+		}else{
+			width = data.width;
+			data = data.css;
+			if(typeof data == 'string') data = [data];	
+		};
+		for(var i = 0, l=data.length; i < l; i++){
+			format['css_respond_' + Math.floor((new Date().getTime()) + (Math.random() * 100000))] = data[i];
+		};
+		cssData[key] = {
+			'width': width,
+			'css' : format
+		}
+	};
+	
+	//转屏宽度引用适配
+	var changeGetWidth = function(){
+		switch(window.orientation) {
+			case 0: 
+				currentValue = currentWidth;
+				break;
+			case 180: 
+				currentValue = currentWidth;
+				break;
+			case -90: 
+				currentValue = currentHeight;
+				break;
+			case 90: 
+				currentValue = currentHeight;
+			break;
+		};
+	};
+
+		
+	//获得元素
+	var getDom = function(id){
+		return document.getElementById(id) || null;
+	};
+	
+	//获得head
+	var getHead = function(){
+		return document.getElementsByTagName('head')[0];
+	};
+	
+	//css渲染
+	var cssRender = function(newcss,oldcss){
+		//删除旧CSSdom
+		if(oldcss){
+			for(var key in oldcss.css){
+				var itemdom = getDom(key);
+				if(itemdom) itemdom.parentNode.removeChild(itemdom);	
+				
+			};
+		};
+		if(newcss){
+			var headdom = getHead();
+			//插入新CSSdom
+			for(var key in newcss.css){
+				var link = document.createElement('link');
+				link.setAttribute('rel','stylesheet');
+				link.setAttribute('type','text/css');
+				link.setAttribute('href',newcss.css[key]);
+				link.setAttribute('id',key);
+				headdom.appendChild(link);
+			};
+		};
+	};
+	
+	// meta渲染
+	var metaRender = function(data){
+		var meta = document.getElementsByTagName('meta'),currentMeta,headdom = getHead();
+		//删除meta
+		for(var i = 0, l = meta.length; i < l; i++){
+			var item = meta.item(i);
+			if(item.name == data.name) {
+				currentMeta = item;
+				//item.parentNode.removeChild(item);
+			};
+		};
+		
+		//插入新meta
+			
+			var meta = document.createElement('meta');
+			meta.setAttribute('name',data.name);
+			meta.setAttribute('content',data.content);
+			if(currentMeta){
+				//alert('replace');
+				headdom.replaceChild(meta,currentMeta);
+			}else{
+				//alert('add');
+				getHead().appendChild(meta);
+			}
+	};
+	
+	//获取viewport值
+	var viewPort = function(data){
+		var value = [];
+		value[0] = 'width=' + (data.width || 'device-width');
+		value[1] = 'initial-scale=' + (data['initial-scale'] || '1');
+		value[2] = 'minimum-scale=' + (data['minimum-scale'] || '1');
+		value[3] = 'maximum-scale=' + (data['maximum-scale'] || '1');
+		value[4] = 'target-densitydpi=' + (data['target-densitydpi'] || 'device-dpi');
+		//value[5] = 'user-scalable=' + (data['user-scalable'] || 'yes');
+		return value.join(',');
+	};
+	
+	//计算Scale
+	var getScale = function(data){
+		//alert('computerWidth:' + computerWidth())
+		//alert('width:' + data.width)
+		 var scale = (computerWidth() / data.width) + '';
+		 if(scale.indexOf('.') > -1){
+			scale = scale.substring(0,scale.indexOf('.') + 3);
+		 };
+		 return parseFloat(scale);
+	};
+	
+	
+	
+	//计算当前宽度并进行事件触发
+	var computerWidth = function(){
+		var cV = currentValue(),l= widthArray.length;		
+		for(var i =0; i<l; i++){
+			if(cV <= widthArray[i]){
+				if(cV == widthArray[i]){
+					return widthArray[i];
+				}else if((i-1) > 0){
+					return widthArray[i-1];
+				}else{
+					return widthArray[i];
+				};
+			};
+		};
+		return widthArray[l-1];
+	};
+	
+	//设定meta标签
+	var setMetaViewPort = function(){
+		
+		if(cssData[computerWidth()].width){
+			 metaWirted.viewPort = true;
+			 var scale = getScale(cssData[computerWidth()]);
+			
+			 metaRender({
+				'name':'viewport',
+				'content': viewPort({'initial-scale':scale,'maximum-scale':scale,'minimum-scale':scale})
+			 });	
+			 alert(viewPort({'initial-scale':scale,'maximum-scale':scale,'minimum-scale':scale}))
+		 }else{
+		 };
+	};
+	
+	//转屏引用适配
+	var orientationchange = function(){
+		 changeGetWidth();
+		 //setMetaViewPort();
+	};
+
+
+	/*
+	//设值引用适配
+	if(isApple){
+		window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationchange, false);
+		currentWidth = function(){return window.screen.width};
+		currentHeight = function(){return window.screen.height};				
+		orientationchange();		
+	}else if(isAndroid){
+		window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationchange, false);
+		currentWidth = function(){return 320};
+		currentHeight = function(){return 320};	
+		orientationchange();		
+	}else if(isIE6){
+		currentWidth = function(){return window.screen.width};
+		currentHeight = function(){return window.screen.height};
+		currentValue = currentWidth;			
+	}else{
+		currentWidth = function(){return document.getElementsByTagName('body').length == 0 ?  window.screen.availWidth : document.getElementsByTagName('body')[0].clientWidth};
+		currentHeight = function(){return document.getElementsByTagName('body').length == 0 ? window.screen.availHeight : document.getElementsByTagName('body')[0].offsetHeight};
+		currentValue = currentWidth;			
+	};
+
+
+	//cssRender(cssData['320'],cssData['320'])
+
+	setInterval(function(){	
+		var c = computerWidth();
+		
+		if(widthCache != c){
+			//alert(widthCache + '  ' + c);
+			setMetaViewPort();
+			cssRender(cssData[c],cssData[widthCache]);
+			widthCache = c;
+			//alert('--' + widthCache + '  ' + c);
+		};
+	},500);
+	
+};
+
+*/
+</script>
+
+<script type="text/javascript">
+	ResponseCss({
+		'320':{
+			'width':470,
+			'css':'http://css.letvcdn.com/css/201302/16/H-470.css'
+		},
+		'480':{
+			'width':470,
+			'css':'http://css.letvcdn.com/css/201302/16/H-470.css'			
+		},
+		'968':'http://css.letvcdn.com/css/201302/07/H-968.css',
+		'1024':'http://css.letvcdn.com/css/201302/07/H-1024.css',
+		'1280':'http://css.letvcdn.com/css/201302/07/H-1280.css',
+		'1440':'http://css.letvcdn.com/css/201302/07/H-1440.css'
+		});
+</script>
+<link rel="Shortcut Icon" href=" http://www.letv.com/favicon.ico"/>
+<link rel="apple-touch-icon-precomposed" href="http://i1.letvimg.com/img/201206/29/iphonelogo.png" >
+<link rel="stylesheet" type="text/css" href="http://css.letvcdn.com/css/201302/07/head-1.css" />
+<link rel="stylesheet" type="text/css" href="http://css.letvcdn.com/css/201302/08/home-1.css" />
+<link rel="stylesheet" type="text/css" href="http://css.letvcdn.com/css/201302/07/H-470.css" />
+</head>
+<body>
+<div class="Head">
+  <div class="Head-info">
+    <div class="left">
+      <h1 title="乐视网" class="H-Logo"><a href="http://www.letv.com" title="乐视网" target="_blank"><img src="http://i1.letvimg.com/img/201302/07/logo.png" width="134" height="27" alt="乐视网" /></a></h1>
+      <div class="H-terminal">
+        <ul>
+          <li class="Li01"><a href="#" title="乐视TV" target="_blank">乐视TV</a></li>
+          <li class="Li02">|</li>
+          <li class="Li03"><a href="#" title="乐迷专区" target="_blank">乐迷专区</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="con">
+      <div data-itemhldr="input[type=submit]" data-statectn="formbox" class="H-search">
+        <form action="http://so.letv.com/s" target="_blank">
+          <input type="text" name="" class="i-t" value="只为极致体验-乐视网">
+          <input type="submit" value="" class="i-b">
+        </form>
+      </div>
+    </div>
+    <div class="right" style="display:none;">
+      <div class="H-user">
+        <div class="H-notes">
+          <div class="notes-no active"><span class="recHov"><a href="javascript:void(0)" title=""><i></i><b class="triangle"></b></a></span>
+            <div class="lookedbox" style="z-index: 301; display: block;">
+              <div class="RecArea">
+                <div class="recTip watchtip"><a class="blu" data-command="dologin">登录</a>后将为您永久保存播放记录，还能得成长值拿红包哦，赶快<a class="blu" target="_blank" href="http://sso.letv.com/user/emailreg">注册</a>吧。<i title="历史记录">&nbsp;</i><a title="删除" data-command="delTip" class="del">×</a></div>
+                <ul class="newRecUl">
+                  <li data-title="我怀了你的孩子 第23集" data-per="88"><i class="web">&nbsp;</i><em class="icon"><a data-command="enterRecord" target="_blank" href="http://www.letv.com/ptv/vplay/1888338.html?htime=1308.521">我怀了你的孩子 第23集</a></em><span class="red"><a target="_blank" href="http://www.letv.com/ptv/vplay/1888338.html?htime=1308.521" class="a-1">续播</a><a title="" data-key="v1888338" data-command="delete" class="a-2">删除</a></span>
+                    <div class="rate">
+                      <p style="width:215.6px;"></p>
+                    </div>
+                    <div class="prompt" style="width:118px;left:51%;"><b style="left:75.8%;" class="triangle">&nbsp;</b>已看到21分48秒,88%</div>
+                  </li>
+                  <li data-title="《大王小王》20130128:胖友的烦恼" data-per="5"><i class="web">&nbsp;</i><em class="icon"><a data-command="enterRecord" target="_blank" href="http://www.letv.com/ptv/vplay/1886596.html?htime=119.923">《大王小王》20130128:胖友的烦恼</a></em><span class="red"><a target="_blank" href="http://www.letv.com/ptv/vplay/1886596.html?htime=119.923" class="a-1">续播</a><a title="" data-key="p82800" data-command="delete" class="a-2">删除</a></span>
+                    <div class="rate">
+                      <p style="width:12.25px;"></p>
+                    </div>
+                    <div class="prompt" style="width:118px;left:10%;"><b style="left:7%;" class="triangle">&nbsp;</b>已看到01分59秒,5%</div>
+                  </li>
+                  <li data-title="江南Style (2012年EMA现场Gangnam .." data-per="100" class=""><i class="web">&nbsp;</i><em class="icon"><a data-command="enterRecord" target="_blank" href="http://www.letv.com/ptv/vplay/1798125.html?htime=236">江南Style (2012年EMA现场Gangnam ..</a></em><span class="red" style="display: none;"><a target="_blank" href="http://www.letv.com/ptv/vplay/1798125.html?htime=236" class="a-1">续播</a><a title="" data-key="p83537" data-command="delete" class="a-2">删除</a></span>
+                    <div class="rate">
+                      <p style="width:245px;"></p>
+                    </div>
+                    <div class="prompt" style="width:118px;left:51%;"><b style="left:94%;" class="triangle">&nbsp;</b>已看到03分56秒,100%</div>
+                  </li>
+                  <li data-title="江南Style（泰国版）" data-per="100" class=""><i class="web">&nbsp;</i><em class="icon"><a data-command="enterRecord" target="_blank" href="http://www.letv.com/ptv/vplay/1740278.html?htime=213">江南Style（泰国版）</a></em><span class="red" style="display: none;"><a target="_blank" href="http://www.letv.com/ptv/vplay/1740278.html?htime=213" class="a-1">续播</a><a title="" data-key="p84194" data-command="delete" class="a-2">删除</a></span>
+                    <div class="rate">
+                      <p style="width:245px;"></p>
+                    </div>
+                    <div class="prompt" style="width:118px;left:51%;"><b style="left:94%;" class="triangle">&nbsp;</b>已看到03分33秒,100%</div>
+                  </li>
+                  <li data-title="二次曝光 高清完整版" data-per="1"><i class="web">&nbsp;</i><em class="icon"><a data-command="enterRecord" target="_blank" href="http://www.letv.com/ptv/vplay/1774468.html?htime=119.81">二次曝光 高清完整版</a></em><span class="red"><a target="_blank" href="http://www.letv.com/ptv/vplay/1774468.html?htime=119.81" class="a-1">续播</a><a title="" data-key="p80508" data-command="delete" class="a-2">删除</a></span>
+                    <div class="rate">
+                      <p style="width:2.45px;"></p>
+                    </div>
+                    <div class="prompt" style="width:118px;left:10%;"><b style="left:0.6000000000000001%;" class="triangle">&nbsp;</b>已看到01分59秒,1%</div>
+                  </li>
+                </ul>
+                <div style="display:none" class="maskbox"></div>
+                <div style="display:none" class="opcInfo"></div>
+              </div>
+              <div class="opc"><span><u class="cloud" style="cursor:default" title="同步到云端">同步</u></span><span><a class="clear" data-command="clearAll">清空</a></span><span><a data-command="dologin" class="all">查看全部</a></span></div>
+            </div>
+            <iframe style="background: none repeat scroll 0px 0px rgb(255, 255, 255); overflow: hidden; position: absolute; z-index: 300; width: 247px; height: 392px; border-style: none; display: block; left: -182px; top: 43px;"></iframe>
+          </div>
+        </div>
+        <div class="top-user">
+          <div class="user-login" style="">
+            <div class="login-txt"><span class="s-1"><a title="登录">登录</a></span><i>|</i><span class="s-2"><a href="http://sso.letv.com/user/emailreg" target="_blank" title="注册">注册</a></span><b class="triangle"></b></div>
+            <div class="top-show">
+              <ul class="oLogn">
+                <li><a href="http://sso.letv.com/oauth/qq" target="_blank" class="qq">QQ登录</a></li>
+                <li><a href="http://sso.letv.com/oauth/sina" target="_blank" class="sina">新浪微博</a></li>
+                <li><a href="http://sso.letv.com/oauth/renren" target="_blank" class="renren">人人登录</a></li>
+                <li><a href="http://sso.letv.com" target="_blank" class="more">更多方式登录&gt;&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<script>
+(function(){
+	$('.i-t').click(function(){
+		$('.H-search').addClass('active');
+	})
+})();
+</script>-->
+<div class="Nav" style="display:none;">
+  <div class="navbar"></div>
+</div>
+<div class="Pic-show" style="display:none;"></div>
+<div class="Heat-up" style="display:none;">
+  <div class="hot-body">
+    <div class="left">
+      <div class="info-list">
+        <div class="list cn-1">
+          <ul class="pic-list u-1">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-1</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="list cn-2">
+          <ul class="pic-list u-2">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-2</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="list cn-3">
+          <ul class="pic-list u-3">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-3</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="list cn-4">
+          <ul class="pic-list u-4">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-4</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="list cn-5">
+          <ul class="pic-list u-5">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-4</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="list cn-6">
+          <ul class="pic-list u-6">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-4</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="rank">
+        <h3>指数</h3>
+        <ol class="num-list">
+          <li><i>1</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>2</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>3</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>4</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>5</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>6</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+        </ol>
+      </div>
+      <div class="special">
+        <h3>电视专题官网</h3>
+        <ul class="txt-list">
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="Tv">
+  <div class="title">
+    <h2 data-text="电视剧">电视剧</h2>
+    <div class="tv-scroll">
+      <ul>
+        <li>所有电视剧栏目</li>
+      </ul>
+    </div>
+  </div>
+  <div class="info-body">
+    <div class="left">
+      <div class="info-focus">
+        <div class="list lt-1">
+          <dl class="w380">
+            <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+            <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+            <dd class="d-i">图片的文字介绍</dd>
+          </dl>
+        </div>
+        <div class="list lt-2">
+          <ul class="pic-list u-1">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-1</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+          <ul class="pic-list u-2">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-2</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="con">
+      <div class="info-list">
+        <div class="list cn-1">
+          <ul class="pic-list u-1">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-1</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="list cn-2">
+          <ul class="pic-list u-2">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-2</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="list cn-3">
+          <ul class="pic-list u-3">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-3</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="list cn-4">
+          <ul class="pic-list u-4">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-4</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="rank">
+        <h3>指数</h3>
+        <ol class="num-list">
+          <li><i>1</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>2</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>3</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>4</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>5</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>6</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+        </ol>
+      </div>
+      <div class="special">
+        <h3>电视专题官网</h3>
+        <ul class="txt-list">
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="banner" style="display:none;">
+  <div class="left"><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /></a></div>
+  <div class="right"><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /></a></div>
+</div>
+<div class="movie">
+  <div class="title">
+    <h2 data-text="电影">电影</h2>
+    <div class="tv-scroll">
+      <ul>
+        <li>所有电视剧栏目</li>
+      </ul>
+    </div>
+  </div>
+  <div class="info-body">
+    <div class="left">
+      <div class="info-focus">
+        <div class="list lt-1">
+          <dl class="w380">
+            <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+            <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+            <dd class="d-i">图片的文字介绍</dd>
+          </dl>
+        </div>
+        <div class="list lt-2">
+          <ul class="pic-list u-1">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-1</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+          <ul class="pic-list u-2">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-2</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="con">
+      <div class="info-list">
+        <div class="list cn-1">
+          <ul class="pic-list u-1">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-1</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="list cn-2">
+          <ul class="pic-list u-2">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-2</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="list cn-3">
+          <ul class="pic-list u-3">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-3</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+        <div class="list cn-4">
+          <ul class="pic-list u-4">
+            <li class="Li01">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍u-4</dd>
+              </dl>
+            </li>
+            <li class="Li02">
+              <dl class="w180">
+                <dt><a href="" title=""><img src="http://i3.letvimg.com/img/201301/31/img.png" alt="" /><b class="bg"></b></a></dt>
+                <dd class="d-t"><a href="" title="">图片的标题文字</a></dd>
+                <dd class="d-i">图片的文字介绍</dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="rank">
+        <h3>指数</h3>
+        <ol class="num-list">
+          <li><i>1</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>2</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>3</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>4</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>5</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i>6</i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+        </ol>
+      </div>
+      <div class="special">
+        <h3>电视专题官网</h3>
+        <ul class="txt-list">
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+          <li><i></i><u><a href="" title="" target="_blank">第一名</a></u><em>96.66</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="Foot"></div>
+
+<script>
+		var width = Math.min(screen.width,screen.height),
+		    height = Math.max(screen.width,screen.height),
+		    rate = height / width;
+
+
+		var ele = document.querySelector('meta[name="viewport"]');
+		function fn(e){
+			//alert(e.type);
+			//document.getElementById('label').innerHTML = window.orientation;
+			rate = '' + rate.toFixed(1);		
+			ele.content = window.orientation !== 0 ?
+							'initial-scale='+rate+', maximum-scale='+rate+', minimum-scale='+rate+', user-scalable=no' :
+								'initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no';
+								
+		}
+
+		//webkit移动版 差不多都支持
+		window.addEventListener('load',fn,false);
+		window.addEventListener('orientationchange',fn,false);
+</script>
+</body>
+</html>

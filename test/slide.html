@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>zepto.js test</title>
+	  <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+	  <script src="http://cubiq.org/dropbox/iscroll4/src/iscroll.js"></script>
+
+	  <style>
+	  #wrapper {
+	width:320px;
+	height:160px;
+
+	float:left;
+	position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
+	z-index:1;			/* it seems that recent webkit is less picky and works anyway. */
+	overflow:hidden;
+
+	background:#aaa;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	border-radius:10px;
+	background:#e3e3e3;
+}
+
+#scroller {
+	width:1280px;
+	height:100%;
+	float:left;
+	padding:0;
+}
+
+#scroller ul {
+	list-style:none;
+	display:block;
+	float:left;
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	text-align:left;
+}
+
+#scroller li {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing:border-box;
+	display:block; float:left;
+	width:320px; 
+	height:160px;
+	text-align:center;
+	font-family:georgia;
+	font-size:18px;
+	line-height:140%;
+}
+
+
+	  </style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="scroller">
+				<ul id="thelist">
+					<li><a href="http://www.baidu.com"><img src="http://wxnet.me/images/test/slide1.jpg" width="320"></a></li>
+					<li><a href="http://www.baidu.com"><img src="http://wxnet.me/images/test/slide2.jpg" width="320"></a></li>
+					<li><a href="http://www.baidu.com"><img src="http://wxnet.me/images/test/slide3.jpg" width="320"></a></li>
+					<li><a href="http://www.baidu.com"><img src="http://wxnet.me/images/test/slide4.jpg" width="320"></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+var myScroll;
+
+function loaded() {
+	myScroll = new iScroll('wrapper', {
+		snap: true,
+		momentum: false,
+		hScrollbar: false,
+		onScrollEnd: function () {
+			document.querySelector('#indicator > li.active').className = '';
+			document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+		}
+	 });
+}
+
+document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+	</body>
+</html>

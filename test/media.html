@@ -1,0 +1,40 @@
+---
+layout: webapp
+title: 320
+---
+
+<style>
+body,html {
+	margin: 0;
+	padding: 0;
+}
+.pannel {
+	width: 320px;
+	height:480px;
+	background-color: green;
+	margin: 0 auto;
+}
+</style>
+<div class="pannel">
+	480*320
+</div>
+
+<script>
+
+var mql = window.matchMedia('screen and (width: ' + window.innerWidth + 'px)');
+
+
+mql.addListener(function(mql) {
+
+ if (mql.matches) {
+
+ alert("Matches now!");
+
+ } 
+
+});
+
+
+
+
+</script>
