@@ -1,6 +1,8 @@
 # localStorage与domain设置
 
-开发letv的webapp的播放记录功能，在pc端和android版的chrome测试很顺利通过了，但后来进行多平台测试的时候，悲剧发生了。。
+localStorage的写入和读取，不能跨子域，否则在一些移动端浏览器上，会出现读取不到的情况。
+
+最近开发一个移动端的播放记录功能，在pc端和android版的chrome测试很顺利通过了，但后来进行多平台测试的时候，悲剧发生了。。
 
 ## 掉进localStorage的坑里
 android版本UC、iphone及ipad mini版的safari，localStorage跨页面读取不到数据，必须要重启浏览器后才能够正常的读取到数据。
@@ -16,9 +18,10 @@ android版本UC、iphone及ipad mini版的safari，localStorage跨页面读取�
 
 在写入localStorage的页面方法之前没有显示的设置document.domain,默认的值为 labs.wxnet.me,但是在读取的页面，读取数据之前显示的设置了document.domain为根域wxnet.me
 
-## 将问题环境抽象出demo
+## 将问题环境抽象为demo
 写入数据的页面 http://labs.wxnet.me/labs/writelocalstorage.html
 	
+	//document.domain默认值为子域 labs.wxnet.me
 	localStorage['k'] = '{"a":"1"}';
 	document.domain = "wxnet.me";
 	
