@@ -66,7 +66,7 @@ function crossPlus(input){
 }
 
 
-function getMaxSum(numbers) {
+function execXiangGe(numbers) {
 	var max = 0,tempmax = 0,i = 0,end = numbers.length;
 	for (; i < end; i++) {
 		tempmax = Math.max(tempmax + numbers[i], 0);
@@ -75,6 +75,34 @@ function getMaxSum(numbers) {
 	return max;
 }
 
+function execHaiwen(arr){
+    var curMax = 0;
+    var len = arr.length;
+    for(var i = len - 1 ; i > 0 ; i--){
+        curMax = arr[i] - curMax > 0 ? arr[i] : curMax;
+        arr[i] > 0 ? arr[i-1] += arr[i] : 0;
+    }
+    curMax = arr[0] - curMax > 0 ? arr[0] : curMax;
+    return curMax;
+}
+
+
+var execQixiu = function(array) {
+    var i, last, len, ret, t;
+    last = array[0] > 0 ? array[0] : 0;
+    ret = last;
+    len = array.length;
+    i = 1;
+    while (i < len) {
+        t = last + array[i];
+        last = t > 0 ? t : 0;
+        if (last > ret) {
+            ret = last;
+        }
+        i++;
+    }
+    return ret;
+};
 
 //test case
 //console.log( crossPlus([-1,0,-1,3,-2]) );
@@ -85,6 +113,7 @@ console.time('total');
 //var newArr = combine( data );
 //console.timeEnd('combine');
 //console.time('plus');
-console.log( getMaxSum(data) );
+console.log( execQixiu(data) );
+
 console.timeEnd('total');
 
