@@ -1,4 +1,4 @@
-var data = require('./data');
+var data = require('./data500');
 
 //test case
 //console.log( Math.max.apply(null,[1,2,3,4,-1,10,11]) );
@@ -66,12 +66,25 @@ function crossPlus(input){
 }
 
 
+function getMaxSum(numbers) {
+	var max = 0,tempmax = 0,i = 0,end = numbers.length;
+	for (; i < end; i++) {
+		tempmax = Math.max(tempmax + numbers[i], 0);
+		max = Math.max(max, tempmax);
+	}
+	return max;
+}
+
 
 //test case
 //console.log( crossPlus([-1,0,-1,3,-2]) );
 //console.log("max: " + crossPlus([1,-1,3,-2]) );
 //console.log("max: " + crossPlus([11,-1,3,13,-1,99]) );
-console.time('time');
-console.log( crossPlus(combine( [1,-9,2,-99,1,-1,100,-90,1000] )) );
-console.timeEnd('time');
+console.time('total');
+//console.time('combine');
+//var newArr = combine( data );
+//console.timeEnd('combine');
+//console.time('plus');
+console.log( getMaxSum(data) );
+console.timeEnd('total');
 
