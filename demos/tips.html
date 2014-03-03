@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
+	.tips {
+			border-radius:2px;
+			box-shadow:0 1px 6px 1px rgba(0,0,0,.2);
+			padding:25px;
+			position:relative;
+			width:100px;
+			top:200px;
+			left:200px;
+			margin-bottom:100px;
+	}
+	
+	.tips.bottom .arrow {
+		left: 20%;
+		margin-left: -9px;
+		border-top-width: 0;
+		border-bottom-color: #E43F3F;
+		border-bottom-color: rgba(0,0,0,.25);
+		top: -9px;
+	}
+
+	.tips .arrow {
+		border-width: 9px;
+	}
+
+	.tips .arrow, .tips .arrow:after {
+		position: absolute;
+		display: block;
+		width: 0;
+		height: 0;
+		border-color: transparent;
+		border-style: solid;
+	}
+
+	.tips.bottom .arrow:after {
+		content: " ";
+		top: 1px;
+		margin-left: -8px;
+		border-top-width: 0;
+		border-bottom-color: #fff;
+	}
+		
+	.tips .arrow:after {
+		border-width: 8px;
+		content: "";
+	}
+	</style>
+</head>
+<body>
+	
+	<div class="tips bottom">
+		<div class="arrow"></div>
+		<div class="tips-content">内容内容内容</div>
+		<a href="#">我知道了X</a>
+	</div>
+</body>
+</html>
