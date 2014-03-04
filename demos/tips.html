@@ -14,45 +14,29 @@
 			margin-bottom:100px;
 	}
 	
-	.tips.bottom .arrow {
+	.tips.top .arrow {
+		position:absolute;
 		left: 20%;
 		margin-left: -9px;
 		border-top-width: 0;
 		border-bottom-color: #E43F3F;
 		border-bottom-color: rgba(0,0,0,.25);
-		top: -9px;
-	}
-
-	.tips .arrow {
-		border-width: 9px;
-	}
-
-	.tips .arrow, .tips .arrow:after {
-		position: absolute;
-		display: block;
-		width: 0;
-		height: 0;
-		border-color: transparent;
-		border-style: solid;
-	}
-
-	.tips.bottom .arrow:after {
-		content: " ";
-		top: 1px;
-		margin-left: -8px;
-		border-top-width: 0;
-		border-bottom-color: #fff;
-	}
-		
-	.tips .arrow:after {
-		border-width: 8px;
-		content: "";
+		width:29px;
+		height:24px;
+		top: -15px;
+		background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAYCAYAAAAGXva8AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2RjI5RDU2OTlCNkQxMUUzQTYyNUREQzlBNEU0MzMyQSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2RjI5RDU2QTlCNkQxMUUzQTYyNUREQzlBNEU0MzMyQSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjZGMjlENTY3OUI2RDExRTNBNjI1RERDOUE0RTQzMzJBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjZGMjlENTY4OUI2RDExRTNBNjI1RERDOUE0RTQzMzJBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+m3RYFAAAAWRJREFUeNrslrFOhEAQhm+88zwP0dOYGLWzs/AB6HwHG3wDH8P4AryANYmdBR0vIAmNFY2EQgoJDQk0JsA4e9kz62bJLcbcFd6f/CFZZubb2SXsAiIOVq2twRq0FuhIHgCArljQrPljv1TbN1pSAHrAUfEetTrtKA49OxYngLpQ0HyKEBUAdT8kFQB47NyO4xhhGJ6KY4JBsmIdaKNFC8lDvhLb5DF5hzxxXfekruuXtm3fCHxFY7vcEx4z5jksdyjXnzMUUCWMFfY876JpmlfkIvBHFEXX9G6PbJCnMlwXKsNYIcP3/UsCxiiJwFUcxzcUs082Zbgu9LszXsAMgsAi4Dt26zNN0zuKnZEPRLgudLqAsdknSXLLukENZVl2TzlHIlwXavKEWZ7nD9hTRVE8Uu7xAq4LPbRt+6yqqif8pcqyfLYs65zBVVBQ/Bv/+qyD/3u0baCrvTn0uCFslnepvgQYAEg43btvUYzaAAAAAElFTkSuQmCC') no-repeat 0 0;
 	}
 	</style>
 </head>
 <body>
 	
 	<div class="tips bottom">
+		<div class="arrow"></div>
+		<div class="tips-content">内容内容内容</div>
+		<a href="#">我知道了X</a>
+	</div>
+	
+	<div class="tips top">
 		<div class="arrow"></div>
 		<div class="tips-content">内容内容内容</div>
 		<a href="#">我知道了X</a>
