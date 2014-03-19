@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+</head>
+<body>
+	<style>
+	.popup {
+		width:305px;
+		font:14px/1.5 arial,\5b8b\4f53,sans-serif;
+		margin:-10px;
+		background:#fff;
+	}
+	
+	.hd {
+		height:25px;
+		background-color:#0081ff;
+		border-bottom:solid 1px #e4e4e4;
+		font-size:18px;
+		font-weight:400;
+		position:relative;
+		padding:10px;
+		color:#fff;
+	}
+	
+	.hd i {
+		display:inline-block;
+		_display:inline;
+		width:23px;
+		height:21px;
+		background:#0081ff url(http://gtms03.alicdn.com/tps/i3/T1ujnXFu0XXXb.cabb-23-21.png) no-repeat 0 0;
+		font-style:normal;
+		position:relative;
+		top:3px;
+		margin:0 8px;
+	}
+	
+	.hd .close {
+		position:absolute;
+		right:10px;
+		top:5px;
+		font-size:24px;
+		text-decoration:none;
+		color:#b3b3b3;
+	}
+	
+	
+	.ct {
+		height:118px;
+		padding:16px;
+		font-size:14px;
+	}
+	
+	.ct .pic-wrapper,.ct .qrcode{
+		float:left;
+		margin-right:16px;
+	}
+	
+	.pic {
+		display:block;
+	}
+	
+	.qrcode {
+		display:none;
+	}
+	
+	.pic-wrapper {
+		position:relative;
+		width:120px;
+		height:120px;
+	}
+	
+	.pic-wrapper .sqr {
+		position:absolute;
+		width:28px;
+		height:28px;
+		bottom:0;
+		right:0;
+	}
+	
+	
+	.qr {
+		text-decoration: none;
+		color:#333;
+		display:block;
+	}
+	
+	.qr:hover .qrcode{
+		display:block;
+	}
+	
+	.qr:hover .pic-wrapper{
+		display:none;
+	}
+	
+	.ct .title {
+		font-size:18px;
+		
+		color:#ff6600;
+	}
+	
+	.ct p {
+		margin:0;
+		margin-top:10px;
+		font-size:14px;
+	}
+	
+	.ct p span{
+		color:#ce0d12;
+	}
+	</style>
+	<div class="popup">		
+		<a class="qr" href="#">
+		<div class="ct">
+				<div class="pic-wrapper">
+					<img class="pic" src="http://gtms04.alicdn.com/tps/i4/T1O6y8FCJcXXaiKCsI-120-120.png" width="120" height="120">
+					<img class="sqr" src="http://gtms04.alicdn.com/tps/i4/T1OZG.Fs8bXXaG4.rS-300-300.png" width="28" height="28">
+				</div>
+				<img class="qrcode" src="http://gtms04.alicdn.com/tps/i4/T1OZG.Fs8bXXaG4.rS-300-300.png" width="120" height="120">
+			<div>
+				<span class="title">一二三四五六七</span>
+				<p>其他渠道平均价77元，手机一淘扫码购买<span>仅需45元</span>！</p>
+			</div>
+		</div>
+		</a>
+	</div>
+</body>
+</html>
