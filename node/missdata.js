@@ -39,27 +39,31 @@ var quickSort = function(arr) {
 
 console.time('test');
 
-var sortData = test.sort(function(a,b){
-	return a - b;
-});
+function exec_xiangge(input){
+	var sortData = input.sort(function(a,b){
+		return a - b;
+	});
 
-var arr = [];
-if(sortData[0] != 1) {
-	arr.push(1);
-}
-var temp = 0
-for(var i=0,len=sortData.length - 1;i < len; i++){
-	if(sortData[i+1] - sortData[i] > 1 ){
-		temp = sortData[i] + 1;
-		while(temp < sortData[i+1]){
-			arr.push(temp++);
-		}
-		if(arr.length == 3) {
-			break;
+	var arr = [];
+	if(sortData[0] != 1) {
+		arr.push(1);
+	}
+	var temp = 0
+	for(var i=0,len=sortData.length - 1;i < len; i++){
+		if(sortData[i+1] - sortData[i] > 1 ){
+			temp = sortData[i] + 1;
+			while(temp < sortData[i+1]){
+				arr.push(temp++);
+			}
+			if(arr.length == 3) {
+				break;
+			}
 		}
 	}
+	return arr;
 }
 
-console.log(arr);
+
+
 
 console.timeEnd('test');
