@@ -33,6 +33,18 @@ async.waterfall([
 			_.each(list,function(v){
 				var t = v.repositories[0],url = '';
 				if(t){
+					if(t.url == 'git://github.com/angular-strap/angular-strap.git'){
+						t.url = 'https://github.com/mgcrea/angular-strap';
+					}
+					if(/^git\@github.com\:/.test(t.url)){
+						t.url = t.url.replace(/git\@github.com\:/,'https://github.com/')
+								.replace(/\.git$/,'');
+					}
+					if(/^git\:\/\/github\.com\//.test(t.url) && /\.git$/.test(t.url)){
+						t.url = t.url.replace(/git\:\/\/github\.com\//,'https://github.com/')
+								.replace(/\.git$/,'');
+						
+					}
 					if(t && t.url && t.url.indexOf('https') == 0){
 						url  = v.repositories[0].url.replace(/\.git$/,'');
 						arr.push([v.name,url]);
@@ -84,8 +96,8 @@ async.waterfall([
 						//console.log([obj[0],fk[1]])
 						datas.push({
 							name: obj[0],
-							star: star[1],
-							fork: fk[1]
+							star: +star[1].replace(',',''),
+							fork: +fk[1].replace(',','')
 						})
 					}
 					cb();
@@ -94,9 +106,9 @@ async.waterfall([
 			  cb("Got error: " + e.message);
 			});
 		}, function(err) {
-			console.log('301 list ===============');
-		    console.log(arr301);
-			console.log('301 list end ===============');
+			//console.log('301 list ===============');
+		    //console.log(arr301);
+			//console.log('301 list end ===============');
 			callback(null, arr301,datas);
 		});  
     },
@@ -121,8 +133,8 @@ async.waterfall([
 						//console.log([obj[0],fk[1]])
 						datas.push({
 							name: obj[0],
-							star: star[1],
-							fork: fk[1]
+							star: +star[1].replace(',',''),
+							fork: +fk[1].replace(',','')
 						})
 					}
 					cb();
@@ -132,7 +144,7 @@ async.waterfall([
 			});
 		}, function(err) {
 			// 301 data ==========
-		    console.log(datas);
+		    //console.log(datas);
 			// 301 data end ==========
 			callback(null, datas);
 		});
