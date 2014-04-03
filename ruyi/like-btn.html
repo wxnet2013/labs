@@ -7,6 +7,7 @@
 	<body>
 		<!--[if IE 6]>
 				<script> 
+				//ie6 背景图闪烁
 				try { 
 				document.execCommand("BackgroundImageCache", false, true); 
 				} catch(err) {} 
@@ -46,7 +47,6 @@
 				text-decoration: none;
 				opacity: 0.9;
 				_filter: alpha(opacity=90);
-				
 			}
 			#ruyitao-selector-prefix-like-button-outer:hover {
 				opacity: 1;
@@ -55,6 +55,7 @@
 			.ruyitao-selector-prefix-like-button-logo {
 				display: inline-block;
 				_display: inline;
+				_float:left; 
 				width:17px;
 				height:22px;
 				background-position: 0 0;
