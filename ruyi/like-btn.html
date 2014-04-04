@@ -175,8 +175,38 @@
 		  	  	float: right;
 				_margin-top:-18px;
 			}
+			
+			
+			.ruyitao-selector-prefix-like-button-plusone {
+				position:absolute;
+				top:100px;
+				left:110px;
+				color:#1e90ff;
+				-webkit-transition:top 1.2s,opacity 1.2s;
+				transition: top 1.2s,opacity 1.2s;
+			}
+			
+			.ruyitao-selector-prefix-like-button-drop {
+				top:30px;
+				opacity:0;
+			}
+			
+			.ruyitao-selector-prefix-like-button-heart {
+				display:inline-block;
+				_display:inline;
+				_float:left;
+				width:18px;
+				height:18px;
+				background-position:0 -282px;
+				vertical-align:middle;
+				margin-top:-6px;
+			}
 		</style>
 		<div style="width:600px;margin:100px">
+		
+		 <div class="ruyitao-selector-prefix-like-button-plusone">
+		 	<i class="ruyitao-selector-prefix-like-button-img ruyitao-selector-prefix-like-button-heart"></i>+1
+		 </div>
 			
 		<div id="ruyitao-selector-prefix-like-button">
 		  <a id="ruyitao-selector-prefix-like-button-outer" class="" href="#" hidefocus="true">
@@ -197,5 +227,13 @@
 		
 		</div>
 		
+		
+		<script>
+		var ele = document.querySelector('.ruyitao-selector-prefix-like-button-plusone');
+		
+		document.onclick = function(){
+			ele.classList.add('ruyitao-selector-prefix-like-button-drop');
+		};
+		</script>
 	</body>
 </html>
