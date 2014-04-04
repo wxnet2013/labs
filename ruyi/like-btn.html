@@ -179,15 +179,16 @@
 			
 			.ruyitao-selector-prefix-like-button-plusone {
 				position:absolute;
-				top:100px;
-				left:110px;
+				top:0;
+				left:50px;
 				color:#1e90ff;
 				-webkit-transition:top 1.2s,opacity 1.2s;
 				transition: top 1.2s,opacity 1.2s;
+				z-index:-1;
 			}
 			
 			.ruyitao-selector-prefix-like-button-drop {
-				top:30px;
+				top:-70px;
 				opacity:0;
 			}
 			
@@ -204,11 +205,12 @@
 		</style>
 		<div style="width:600px;margin:100px">
 		
-		 <div class="ruyitao-selector-prefix-like-button-plusone">
-		 	<i class="ruyitao-selector-prefix-like-button-img ruyitao-selector-prefix-like-button-heart"></i>+1
-		 </div>
+		 
 			
 		<div id="ruyitao-selector-prefix-like-button">
+   		 <div class="ruyitao-selector-prefix-like-button-plusone">
+   		 	<i class="ruyitao-selector-prefix-like-button-img ruyitao-selector-prefix-like-button-heart"></i>+1
+   		 </div>
 		  <a id="ruyitao-selector-prefix-like-button-outer" class="" href="#" hidefocus="true">
 			<i class="ruyitao-selector-prefix-like-button-img ruyitao-selector-prefix-like-button-logo"></i>
 		  	<span class="ruyitao-selector-prefix-like-button-text">收藏</span><span id="ruyitao-selector-prefix-like-button-num">13</span> 人
