@@ -22,13 +22,13 @@ var cdnjsSchema = new Schema({
   "repository":{"type": String,"url": String},
   "repositories": [{}],
   "assets": [{"version": String,"files": [String]}]
-});
+},{ collection: 'cdnjs' });
 
 var cdnjscnSchema = new Schema({
   "name": String,
   'g_star': Number,
   'g_fork': Number
-});
+},{ collection: 'cdnjscn' });
 
 var Cdnjs = db.model('cdnjs',cdnjsSchema);
 var cdnjscn = db.model('cdnjscn', cdnjscnSchema);
@@ -66,7 +66,6 @@ Cdnjs.find({},{
 	var arr301 = [],total = arr.length,i=0;
 	
 	var option = {
-			url:path,
 			timeout:10000,
 			headers: {
 			        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36 '
@@ -77,6 +76,7 @@ Cdnjs.find({},{
 	async.eachSeries(arr,function(item,callback){
 		var path = item[1];
 		console.log('start: ' + path);
+		option.url = path;
 		request(option,function(error, res, html){
 			//console.log(error);
 			if(error){ //ESOCKETTIMEDOUT //ETIMEDOUT
@@ -124,6 +124,7 @@ Cdnjs.find({},{
 	// 301
 	async.eachSeries(arr301,function(item,callback){
 		var path = item[1];
+		option.url = path;
 		console.log('start: ' + path);
 		request(option,function(error, res, html){
 			//console.log(error);
