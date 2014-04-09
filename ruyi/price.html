@@ -804,7 +804,7 @@
 		#ruyitao-selector-prefix-price-comparation-wrapper {
 		  height: 85px;
 		  bottom: 0;
-		  border: 1px solid #e9e9e9;
+		  border: 1px solid #d1d1d1;
 		  border-radius: 3px;
 		  white-space: nowrap;
 		  background-color: #fff;
@@ -930,23 +930,48 @@
 		  background-position: -98px -1px;
 		}
 		
-		/*关闭*/
+		/* close */
 		.ruyitao-selector-prefix-close-btn {
-		  position: absolute;
-		  right: -9px;
-		  top: -9px;
-		  width: 18px;
-		  height: 18px;
-		  background: url(%chrome-extension%assets/images/close-icon-18x18.png) no-repeat 0 0;
-		  _background: url(%chrome-extension%assets/images/close-icon-18x18-8bit.png) no-repeat 0 0;
+		  display:block;
+		  float:left;
+		  width: 25px;
+		  height: 85px;
 		  cursor: pointer;
+		  background-color:#fbfbfb;
+		  border-left:solid 1px #d1d1d1;		  
 		}
+		
+		.ruyitao-selector-prefix-close-btn i {
+			display:inline-block;
+			height:15px; 
+			width:9px;
+			position:relative;
+			left:8px;
+			top:35px;
+		}
+		.ruyitao-selector-prefix-close-fold i {
+			background-position: -150px 0;
+		}
+		.ruyitao-selector-prefix-close-fold:hover i{
+			background-position: -150px -25px;
+		}
+		.ruyitao-selector-prefix-close-unfold i {
+			background-position: -169px 0;
+		}
+		.ruyitao-selector-prefix-close-unfold:hover i{
+			background-position: -169px -25px;
+		}
+
+		
+		
+		
 		</style>
 		
 		
 		<div id="ruyitao-selector-prefix-price-comparation-wrapper" class="ruyitao-selector-prefix-wrapper ruyitao-selector-prefix-products-protection">
 			<div class="ruyitao-selector-prefix-price-comparation-box">
 				<div id="ruyitao-selector-prefix-price-comparation-logo" class="ruyitao-selector-prefix-price-comparation-logo ruyitao-selector-prefix-logo" title="如意淘 - 比价">
+					<!-- ruyitao-selector-prefix-pricebar-icon-(same|search|compare)  -->
 			    	<span class="ruyitao-selector-prefix-pricebar-logo-wrapper ruyitao-selector-prefix-pricebar-icon-same">
 						<i class="ruyitao-selector-prefix-pricebar-icon ruyitao-selector-prefix-pricebar-logo-icon"></i>
 						<i class="ruyitao-selector-prefix-pricebar-icon ruyitao-selector-prefix-pricebar-logo-icon-text"></i><br>
@@ -961,8 +986,10 @@
 				<i class="ruyitao-selector-prefix-pricebar-icon"></i><br>
 				我的收藏<span>100</span>
 			</div>
-			<div id="ruyitao-selector-prefix-price-comparation-close-btn" class="ruyitao-selector-prefix-close-btn" title="关闭">
-			</div>
+			<a id="ruyitao-selector-prefix-price-comparation-close-btn" class="ruyitao-selector-prefix-close-btn ruyitao-selector-prefix-close-fold" title="关闭">
+				<!-- ruyitao-selector-prefix-close-(fold|unfold)-->
+				<i class="ruyitao-selector-prefix-pricebar-icon"></i>
+			</a>
 		</div>
 		
 		
