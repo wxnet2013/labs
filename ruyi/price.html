@@ -246,34 +246,6 @@
 		  /*-background: url(%chrome-extension%assets/images/products/more-8bit.png) no-repeat center center;*/
 		}
 
-		.ruyitao-selector-prefix-ivy-home-link {
-		  float: left;
-		  height: 100%;
-		  width: 110px;
-		  padding-top: 51px;
-		  color: #0c96df;
-		  font-size: 12px;
-		  text-align: center;
-		  background: url(%chrome-extension%assets/images/heart-blue.png) no-repeat center 19px;
-		  cursor: pointer;
-		}
-
-		.ruyitao-selector-prefix-ivy-home-link:hover {
-		  background-color: #f1f1f1 !important;
-		}
-
-		#ruyitao-selector-prefix-ivy-home-link {
-		  padding-top: 0;
-		  background: none;
-		}
-
-		#ruyitao-selector-prefix-ivy-home-link span {
-		  width: 100%;
-		  height: 100%;
-		  display: inline-block;
-		  background: url(%chrome-extension%assets/images/heart-blue.png) no-repeat center center;
-		}
-
 		#ruyitao-selector-prefix-more-results-link:hover, .ruyitao-selector-prefix-more-results-link-hl {
 		  background: #f4f4f4;
 		  background: -webkit-linear-gradient(top, #f4f4f4, #ebebeb);
@@ -828,10 +800,6 @@
 		  text-decoration: underline;
 		}
 		
-		
-		
-		
-		
 		/*wrapper*/
 		#ruyitao-selector-prefix-price-comparation-wrapper {
 		  height: 85px;
@@ -850,8 +818,8 @@
 		  background: -moz-linear-gradient(top, #fdfdfd, #fcfcfc);
 		  background: linear-gradient(180deg, #fdfdfd, #fcfcfc);
 		  height: 100%;
-		  -overflow: hidden; /*Fix for IE6*/
-		  _float: left;
+		  float: left;
+		  _overflow: hidden;
 		}
 
 		/*logo*/
@@ -910,7 +878,7 @@
 		/*logo end*/
 		
 		
-		/*列表*/
+		/* list */
 		#ruyitao-selector-prefix-market-list {
 		  float: left;
 		  overflow: hidden;
@@ -936,33 +904,30 @@
 		  *background: #f4f4f4;
 		}
 		
-		/*收藏链接*/
+		/* list end */
+		
 		.ruyitao-selector-prefix-ivy-home-link {
 		  float: left;
-		  height: 100%;
+		  height: 65px;
+		  padding-top:20px;
 		  width: 110px;
-		  padding-top: 51px;
-		  color: #0c96df;
+		  color: #1e91ff;
 		  font-size: 12px;
 		  text-align: center;
-		  background: url(%chrome-extension%assets/images/heart-blue.png) no-repeat center 19px;
 		  cursor: pointer;
+		  background-color:#fff;
 		}
 
 		.ruyitao-selector-prefix-ivy-home-link:hover {
 		  background-color: #f1f1f1 !important;
-		}
-
-		#ruyitao-selector-prefix-ivy-home-link {
-		  padding-top: 0;
-		  background: none;
-		}
-
-		#ruyitao-selector-prefix-ivy-home-link span {
-		  width: 100%;
-		  height: 100%;
+		}	
+		#ruyitao-selector-prefix-ivy-home-link i {
+		  width: 38px;
+		  height: 33px;
 		  display: inline-block;
-		  background: url(%chrome-extension%assets/images/heart-blue.png) no-repeat center center;
+		  _display:inline;
+		  _float:left;
+		  background-position: -98px -1px;
 		}
 		
 		/*关闭*/
@@ -989,9 +954,15 @@
 					</span>
 				</div>
 			</div>
-			<ul id="ruyitao-selector-prefix-market-list"></ul>
-			<div id="ruyitao-selector-prefix-ivy-home-link" class="ruyitao-selector-prefix-ivy-home-link" title="如意淘的心愿单"><span></span></div>
-			<div id="ruyitao-selector-prefix-price-comparation-close-btn" class="ruyitao-selector-prefix-close-btn" title="关闭"></div>
+			<ul id="ruyitao-selector-prefix-market-list">
+				<li></li>
+			</ul>
+			<div id="ruyitao-selector-prefix-ivy-home-link" class="ruyitao-selector-prefix-ivy-home-link" title="如意淘的心愿单">
+				<i class="ruyitao-selector-prefix-pricebar-icon"></i><br>
+				我的收藏<span>100</span>
+			</div>
+			<div id="ruyitao-selector-prefix-price-comparation-close-btn" class="ruyitao-selector-prefix-close-btn" title="关闭">
+			</div>
 		</div>
 		
 		
