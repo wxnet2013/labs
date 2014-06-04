@@ -7,7 +7,7 @@
 		padding:150px;
 	}
 	
-	.list-sort a,.list-item .p-title a,.mod-filter a,.focus-item a{
+	.list-sort a,.list-item .p-title a,.mod-filter a,.focus-item a,.mod-tab a{
 		text-decoration:none;
 	}
 	/*排序模块*/
@@ -97,7 +97,32 @@
 	.mod-tab {
 		width:900px;
 		height:200px;
-		border:1px solid red;
+		border:1px solid #e5e5e5;
+		
+	}
+	.mod-tab ul {
+		background:#fafafa;
+		list-style:none;
+		border-bottom:1px solid #e5e5e5;
+		height:45px;
+		margin:0;
+		padding:0;
+		font-size:14px;
+	}
+	.mod-tab .tab li {
+		float:left;
+		height:45px;
+		padding:0;
+		border-right:1px solid #e5e5e5;
+		text-align:center;
+		width:127px;
+	}
+	.mod-tab .tab li a {
+		line-height:45px;
+	}
+	.mod-tab .tab li.active {
+		 background:#fff;
+		 height:46px;
 	}
 	.mod-tab .product {
 		display:none;
@@ -183,9 +208,9 @@
 		
 		<h4>TAB</h4>
 		<div class="mod-tab">
-			<ul>
-				<li><a href="#">商品详情</a></li>
-				<li class="active"><a href="#">全部商家</a></li>
+			<ul class="tab">
+				<li class="active"><a href="#">商品详情</a></li>
+				<li><a href="#">全部商家</a></li>
 			</ul>
 			<div class="product">商品</div>
 			<div class="saler">商家</div>
