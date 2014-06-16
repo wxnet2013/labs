@@ -165,6 +165,35 @@
 		margin: 0;
 		padding: 0;
 	}
+	
+	.wen-wrapper .hide {
+		display: none;
+	}
+	.step-wrapper {
+		width: 996px;
+		overflow: hidden;
+	}
+	.step-wrapper .step-content-wrapper {
+		transition:margin-left .5s;
+	}
+	.step-wrapper.step1 .step-content-wrapper {
+		margin-left: 0;
+	}
+	.step-wrapper.step2 .step-content-wrapper {
+		margin-left: -1001px;
+	}
+	.step-wrapper.step3 .step-content-wrapper{
+		margin-left: -2003px;
+	}
+	.step-content-wrapper {
+		width: 3006px;
+	}
+	.step-wrapper .step-content {
+		float: left;
+		width: 930px;
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
 	/* common end */
 	
 	/* step1 */
@@ -176,12 +205,9 @@
 	}
 	.middle-line .or {
 		font-size: 18px;
-		width: 20px;
-		height: 20px;
 		background: #fff;
 		position: relative;
 		top: -13px;
-		left: 186px;
 	}
 	.task-list {
 		width: 900px;
@@ -198,6 +224,9 @@
 		border: 1px solid #eee;
 		padding: 10px;
 	}
+	.task.selected {
+		border: 1px solid #ffe0b2;
+	}
 	.task .cover i {
 		position: absolute;
 		left: 34px;
@@ -210,7 +239,7 @@
 	.task:hover {
 		 border: 1px solid #ffe0b2;
 	}
-	.task:hover i {
+	.task:hover i, .task.selected i {
 		background-position: 0 -108px;
 	}
 	.cover {
@@ -235,7 +264,7 @@
 		margin-bottom: 20px;
 	}
 	.tag-list {
-		
+		margin-left: 20px;
 	}
 	.tag-list .tag {
 		padding: 5px 8px;
@@ -243,196 +272,209 @@
 		color: #fff;
 		border-radius: 2px;
 	}
+	.tag input {
+		margin-left: 84px;
+	}
 	/* step2 end */
 	
 	/* step3 */	
+	input.error {
+		border: 1px solid #ffe0b2;
+	}
 	/* step3 end */
 	</style>
 </head>
 <body>
-	<!-- step1 -->
+	
 	<div class="wen-wrapper">
 		<div class="crumb">
 			<a href="">首页</a><span>></span><a href="">知识小报</a><span>></span><a href="">制作小报</a>
 		</div>
-		<div class="step-content">
-			<div class="hd">
-				<h3>汇聚你我的力量，让知识帮助更多人！</h3>
-				<!-- step1 step2 step3 -->
-				<div class="pointer step1"></div>
-			</div>
-			<div class="bd">
-				<div class="wrapper">
-					<h4>设置小报所属类目</h4>
-					<div class="cat">
-						<label for="">一级类目:</label>
-						<label for="">二级类目:</label>
+		<!-- step1 - 3 -->
+		<div class="step-wrapper step3">
+				<div class="step-content-wrapper">
+					<!-- step1 -->
+					<div class="step-content">
+					<div class="hd">
+						<h3>汇聚你我的力量，让知识帮助更多人！</h3>
+						<!-- step1 step2 step3 -->
+						<div class="pointer step1"></div>
 					</div>
-					<div class="middle-line"><div class="or">或</div></div>
-					<h4 class="focus">完成热门任务<span class="star">*</span><span> 小提示:通过领取任务完成的小报，申请推广通过后会获得更多奖励，通过的速度也会更快哦~</span></h4>
-					<ul class="task-list clearfix">
-						<li>
-						<a class="task">
-							<div class="cover">
-								<img src="http://gtms04.alicdn.com/tps/i4/TB1cZw0FFXXXXXHXVXXMxXJVFXX-100-100.jpg" width="100" height="100">
-								<!-- select -->
-								<i class="icon no-select"></i>
+					<div class="bd">
+						<div class="wrapper">
+							<h4>设置小报所属类目</h4>
+							<div class="cat">
+								<label for="">一级类目:</label>
+								<label for="">二级类目:</label>
 							</div>
-							<div class="content">
-							<h5>汽车导购</h5>
-							<p>任务说明文字任务说明文字任务说明文字任务说明文字任务说明文字任… </p>
-							</div>
-						</a>
-						</li>
-						<li>
-							<a class="task">
-								<div class="cover">
-									<img src="http://gtms04.alicdn.com/tps/i4/TB1cZw0FFXXXXXHXVXXMxXJVFXX-100-100.jpg" width="100" height="100">
-									<!-- select -->
-									<i class="icon no-select"></i>
-								</div>
-								<div class="content">
-								<h5>汽车导购</h5>
-								<p>任务说明文字任务说明文字任务说明文字任务说明文字任务说明文字任… </p>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a class="task">
-								<div class="cover">
-									<img src="http://gtms04.alicdn.com/tps/i4/TB1cZw0FFXXXXXHXVXXMxXJVFXX-100-100.jpg" width="100" height="100">
-									<!-- select -->
-									<i class="icon no-select"></i>
-								</div>
-								<div class="content">
-								<h5>汽车导购</h5>
-								<p>任务说明文字任务说明文字任务说明文字任务说明文字任务说明文字任… </p>
-								</div>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="ft">
-				<div class="prev"><a href="">上一步</a></div>
-				<div class="next"><span>已选择:</span><span>汽车 > 二手车</span> <a href="">下一步</a></div>
-			</div>
-			<div class="bottom-img"></div>
-		</div>
-	</div>
-	<!-- step2 -->
-	<div class="wen-wrapper">
-		<div class="crumb">
-			<a href="">首页</a><span>></span><a href="">知识小报</a><span>></span><a href="">制作小报</a>
-		</div>
-		<div class="step-content">
-			<div class="hd">
-				<h3>汇聚你我的力量，让知识帮助更多人！</h3>
-				<!-- step1 step2 step3 -->
-				<div class="pointer step2"></div>
-			</div>
-			<div class="bd">
-				<div class="wrapper">
-					<h4 class="focus">填写基本资料</h4>
-					<ul class="main-list">
-						<li class="title">
-							<label for="j-title">小报标题:</label>
-							<input id="j-title" type="text" value=""/>
-							<span class="star">*</span>
-							<span>必填</span>
-						</li>
-						<li class="desc">
-							<label for="j-desc">简要介绍:</label>
-							<textarea id="j-desc"></textarea>
-							<span class="star">*</span>
-							<span>必填</span>
-						</li>
-						<li class="tag">
-							<div class="tag-wrapper">
-								<label for="j-tag">设置标签:</label>
-								<span id="j-taglist" class="tag-list">
-									<a href="#" class="tag">母婴</a>
-									<a href="#" class="tag">护肤</a>
-									<a href="#" class="tag">护肤品</a>
-								</span>
-							</div>
-							<div>
-								<input id="j-tag" type="text" value=""/><span>多个标签请用逗号隔开</span>
-							</div>
-						</li>
-						<li class="upload">
-							<label>上传封面:</label>
-							<div>上传<span>支持JPG、GIF、PNG格式图片文件，为保证展示质量，请将图片修改为310PX*180PX后上传</span></div>
-							<div id="j-preview" class="preview"></div>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="ft">
-				<div class="prev"><a href="">上一步</a></div>
-				<div class="next"><span>已选择:</span><span>汽车 > 二手车</span> <a href="">下一步</a></div>
-			</div>
-			<div class="bottom-img"></div>
-		</div>
-	</div>
-	<!-- step3 -->
-	<div class="wen-wrapper">
-		<div class="crumb">
-			<a href="">首页</a><span>></span><a href="">知识小报</a><span>></span><a href="">制作小报</a>
-		</div>
-		<div class="step-content">
-			<div class="hd">
-				<h3>汇聚你我的力量，让知识帮助更多人！</h3>
-				<!-- step1 step2 step3 -->
-				<div class="pointer step3"></div>
-			</div>
-			<div class="bd">
-				<div class="wrapper">
-					<h4 class="focus">
-						编辑知识内容
-						<span class="star"></span>
-						<span>请至少填写3个不同来源的知识链接，最多允许9条，目前仅支持淘宝问答产品内的问题详情页地址</span>
-					</h4>
-					<ul class="main-list">
-						<li>
-							<label for="j-q1">帖子地址<span class="num">1</span>:</label>
-							<input id="j-q1" type="text" value=""/>
-							<span class="star"></span>
-							<span></span>
-							<div class="title">宝宝两个月了，需要添加辅食吗？添加什么辅食呢？
-								<a href="" class="edit-title"><i class="icon eidt"></i></a>
-							</div>
-							<div class="edit"><input type="text" value="" /> <a href="">确认</a><a href="">取消</a></div>
-							<p>答:最好不要添加辅食，一般情况下四个月后再开始添加辅食，现在有新的观点说应该六月以后再添加辅食。添加辅食从谷物开始，蛋黄添加应宝宝两个月了，需要添加辅食吗？添加什么辅食呢？</p>
-						</li>
-						<li></li>
-						<li>
-							<label for="">
-								帖子地址<span class="num">1</span>:
-								<input type="text" value=""/>
+							<div class="middle-line"><span class="or">或</span></div>
+							<h4 class="focus">完成热门任务<span class="star">*</span><span> 小提示:通过领取任务完成的小报，申请推广通过后会获得更多奖励，通过的速度也会更快哦~</span></h4>
+							<ul class="task-list clearfix">
+								<li>
+								<a class="task selected" data-id="">
+									<div class="cover">
+										<img src="http://gtms04.alicdn.com/tps/i4/TB1cZw0FFXXXXXHXVXXMxXJVFXX-100-100.jpg" width="100" height="100">
+										<!-- select -->
+										<i class="icon no-select"></i>
+									</div>
+									<div class="content">
+									<h5>汽车导购</h5>
+									<p>任务说明文字任务说明文字任务说明文字任务说明文字任务说明文字任… </p>
+									</div>
+								</a>
+								</li>
+								<li>
+									<a class="task" data-id="">
+										<div class="cover">
+											<img src="http://gtms04.alicdn.com/tps/i4/TB1cZw0FFXXXXXHXVXXMxXJVFXX-100-100.jpg" width="100" height="100">
+											<!-- select -->
+											<i class="icon no-select"></i>
+										</div>
+										<div class="content">
+										<h5>汽车导购</h5>
+										<p>任务说明文字任务说明文字任务说明文字任务说明文字任务说明文字任… </p>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a class="task" data-id="">
+										<div class="cover">
+											<img src="http://gtms04.alicdn.com/tps/i4/TB1cZw0FFXXXXXHXVXXMxXJVFXX-100-100.jpg" width="100" height="100">
+											<!-- select -->
+											<i class="icon no-select"></i>
+										</div>
+										<div class="content">
+										<h5>汽车导购</h5>
+										<p>任务说明文字任务说明文字任务说明文字任务说明文字任务说明文字任… </p>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="ft">
+						<div class="next"><span>已选择:</span><span id="j-selected">汽车 > 二手车</span> <a class="wdbtn nextbtn" id="j-next1" href="#"><i class="icon icon-next"></i>下一步</a></div>
+					</div>
+					<div class="bottom-img"></div>
+					</div>
+					<!-- step2 -->
+					<div class="step-content">
+					<div class="hd">
+						<h3>汇聚你我的力量，让知识帮助更多人！</h3>
+						<!-- step1 step2 step3 -->
+						<div class="pointer step2"></div>
+					</div>
+					<div class="bd">
+						<div class="wrapper">
+							<h4 class="focus">填写基本资料</h4>
+							<ul class="main-list">
+								<li class="title">
+									<label for="j-title">小报标题:</label>
+									<input id="j-title" type="text" value=""/>
+									<span class="star">*</span>
+									<span>必填</span>
+								</li>
+								<li class="desc">
+									<label for="j-desc">简要介绍:</label>
+									<textarea id="j-desc"></textarea>
+									<span class="star">*</span>
+									<span>必填</span>
+								</li>
+								<li class="tag">
+									<div class="tag-wrapper">
+										<label for="j-tag">设置标签:</label>
+										<span id="j-taglist" class="tag-list">
+											<a href="#" class="tag">母婴</a>
+											<a href="#" class="tag">护肤</a>
+											<a href="#" class="tag">护肤品</a>
+										</span>
+									</div>
+									<div>
+										<input id="j-tag" type="text" value=""/><span>多个标签请用逗号隔开</span>
+									</div>
+								</li>
+								<li class="upload">
+									<label>上传封面:</label>
+									<div>
+										<div class="uploader">
+										<input type="file" class="g-u" id="J_UploaderBtn" value="上传文件" name="Filedata" >
+										<input type="hidden" id="J_Urls" name="urls" value="" />
+										</div>
+										<span>
+											支持JPG、GIF、PNG格式图片文件，为保证展示质量，请将图片修改为310PX*180PX后上传
+										</span>
+									</div>
+									<div id="j-preview" class="preview"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="ft">
+						<div class="prev"><a id="j-prev2" class="prevbtn" href="#"><i class="icon icon-prev"></i>上一步</a></div>
+						<div class="next"><a id="j-next2" class="wdbtn nextbtn" href="#"><i class="icon icon-next"></i>下一步</a></div>
+					</div>
+					<div class="bottom-img"></div>
+					</div>
+					<!-- step3 -->
+					<div class="step-content">
+					<div class="hd">
+						<h3>汇聚你我的力量，让知识帮助更多人！</h3>
+						<!-- step1 step2 step3 -->
+						<div class="pointer step3"></div>
+					</div>
+					<div class="bd">
+						<div class="wrapper">
+							<h4 class="focus">
+								编辑知识内容
 								<span class="star"></span>
-								<span></span>
-							</label>
-							<div class="msg">
-								loading or 
-								<span class="error">帖子来源必须是淘宝问答的问题详情页，请检查您输入的链接和格式</span>
+								<span>请至少填写3个不同来源的知识链接，最多允许9条，目前仅支持淘宝问答产品内的问题详情页地址</span>
+							</h4>
+							<ul class="main-list">
+								<li>
+									<label for="j-q1">帖子地址<span class="num">1</span>:</label>
+									<input id="j-q1" class="question" type="text" value=""/>
+									<span class="star">*</span>
+									<span>必填</span>
+									<div class="content">
+										<div class="msg hide">
+											loading or 
+											<span class="error">
+												帖子来源必须是淘宝问答的问题详情页，请检查您输入的链接和格式
+											</span>
+										</div>
+										<div class="title-wrapper">
+											<div class="title">
+												宝宝两个月了，需要添加辅食吗？添加什么辅食呢？
+												<a href="#" class="edit-title">
+													<i class="icon edit"></i>编辑标题</a>
+											</div>
+											<div class="edit-title hide">
+												<input type="text" value="宝宝两个月了，需要添加辅食吗？添加什么辅食呢？" />
+												<a class="edit-title-ok" href="#">确认</a>
+												<a class="edit-title-cancel" href="#">取消</a>
+											</div>
+										</div>
+										<p class="answer">
+											答:最好不要添加辅食，一般情况下四个月后再开始添加辅食，现在有新的观点说应该六月以后再添加辅食。添加辅食从谷物开始，蛋黄添加应宝宝两个月了，需要添加辅食吗？添加什么辅食呢？
+										</p>	
+									</div>
+								</li>
+							</ul>
+							<div class="add-new">
+								<a class="add-btn" href="#"><i class="icon icon-add"></i>继续添加链接</a>
+								<span>提示:还可以添加</span>
+								<span class="num">5</span>
+								<span>个</span>
 							</div>
-						</li>
-						<li></li>
-					</ul>
-					<div class="add-new">
-						<a href="">继续添加链接</a>
-						<span>提示:还可以添加</span>
-						<span class="num">5</span>
-						<span>个</span>
+						</div>
 					</div>
+					<div class="ft">
+						<div class="prev"><a id="j-prev3" class="prevbtn" href="#"><i class="icon icon-prev"></i>上一步</a></div>
+						<div class="next"><a id="j-publish" class="wdbtn pubbtn" href="#">完成并发表</a></div>
+					</div>
+					<div class="bottom-img"></div>
 				</div>
-			</div>
-			<div class="ft">
-				<div class="prev"><a href="">上一步</a></div>
-				<div class="next"><span>已选择:</span><span>汽车 > 二手车</span> <a href="">下一步</a></div>
-			</div>
-			<div class="bottom-img"></div>
+				</div>
 		</div>
 	</div>
 </body>
